@@ -132,3 +132,20 @@ input[type="range"] {
     background: #fff;
   }
 }
+
+@media print {
+  footer,
+  details summary span {
+    display: none !important;
+  }
+  main {
+    padding-top: 0 !important;
+  }
+  .u-rise {
+    animation: none !important;
+  }
+  li,
+  .rounded-md {
+    break-inside: avoid;
+  }
+}

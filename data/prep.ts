@@ -48,6 +48,10 @@ export const LIKELY_QUESTIONS: { q: string; outline: string; story?: string }[] 
     story: "CRM in a week.",
   },
   {
+    q: "If you started in November, what would you do first?",
+    outline: "Black Friday comes first, and most of it is already decided by then: samples, inventory and LIVE schedules have lead times. So: join the war room, protect margin (discount floors, ads vs. breakeven), and keep stock and dispatch clean. Save the rebuild for December, starting with the event readout by brand. Point to the Q4 page.",
+  },
+  {
     q: "What would you do differently from how we operate today?",
     outline: "Don’t criticize. “From the outside I can’t know. Three things I’d check first: contribution by brand vs. GMV ranking, sample-to-post rate, and how the Shop tab is owned now that it’s half of platform GMV.”",
   },

@@ -1,5 +1,6 @@
 import { Card, Eyebrow, PageHead, SectionHead } from "@/components/ui";
 import { NINETY, QUESTIONS } from "@/data/plan";
+import { TLink } from "@/lib/mode";
 
 export default function PlanPage() {
   return (
@@ -30,6 +31,13 @@ export default function PlanPage() {
           </Card>
         ))}
       </div>
+
+      <p className="u-prose mt-6 max-w-[76ch] text-[14px]">
+        If the start date lands in Q4, Black Friday comes before any of this.{" "}
+        <TLink href="/q4" className="text-live-deep underline decoration-live/40 underline-offset-4 hover:decoration-live">
+          Here’s how I’d run the run-up →
+        </TLink>
+      </p>
 
       <section className="mt-16">
         <SectionHead

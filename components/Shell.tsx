@@ -11,6 +11,7 @@ const NAV = [
   { href: "/scorecard", label: "Scorecard" },
   { href: "/fanfix", label: "Fanfix" },
   { href: "/plan", label: "First 90 days" },
+  { href: "/q4", label: "Q4" },
   { href: "/fit", label: "Fit" },
 ];
 
@@ -95,6 +96,7 @@ function Footer() {
           </TLink>
         </span>
         <span className="flex gap-4">
+          <PrintButton />
           <a href="mailto:william@bywilliaml.com" className="hover:text-ink">
             william@bywilliaml.com
           </a>
@@ -104,5 +106,17 @@ function Footer() {
         </span>
       </div>
     </footer>
+  );
+}
+
+function PrintButton() {
+  return (
+    <button
+      type="button"
+      onClick={() => window.print()}
+      className="no-print uppercase tracking-[0.1em] hover:text-ink"
+    >
+      Save as PDF
+    </button>
   );
 }

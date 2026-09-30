@@ -11,10 +11,13 @@ line becomes a workflow, a model, or a report.
 | --- | --- |
 | `/` | The business on one page: what SuperOrdinary is, how money and product move, where the GM sits |
 | `/engine` | The nine workflows the role owns, each with stages, leaks, KPIs, the first change I'd make, and my evidence. Deep-link with `?w=<id>` |
-| `/economics` | Two live models: one order of a hero SKU (breakeven ROAS), and one brand account under service vs. distribution terms |
+| `/economics` | Three live models: one order (breakeven ROAS), one month of creator sampling, and one brand account under service vs. buy/sell terms |
 | `/scorecard` | KPI trees, a sample portfolio board, and the operating cadence |
 | `/fanfix` | Fanfix and the rest of the group, and where they could meet TikTok Shop |
 | `/plan` | First 90 days and the questions I'd ask |
+| `/q4` | The Black Friday run-up, counted back from Thanksgiving |
+| `/sources` | Every public source, plus where sources disagree |
+| `/prep` | Prep view only (404 otherwise): walkthrough script, likely questions, numbers to know |
 | `/fit` | The posting's requirements, answered with evidence |
 
 ## Public vs. prep
