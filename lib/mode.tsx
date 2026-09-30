@@ -10,28 +10,38 @@ import {
   type ReactNode,
 } from "react";
 
-const ModeCtx = createContext(false);
+interface Mode {
+  share: boolean;
+  prepAllowed: boolean;
+}
 
-/** `?share` — hardcoded two-state gate. Default (absent) is private. */
-export function ModeProvider({ children }: { children: ReactNode }) {
-  const params = useSearchParams();
-  const share = params.has("share");
-  return <ModeCtx.Provider value={share}>{children}</ModeCtx.Provider>;
+const ModeCtx = createContext<Mode>({ share: true, prepAllowed: false });
+
+/**
+ * The view is decided on the server (see middleware.ts) and handed down.
+ * Client code can't unlock the prep view; it can only read the decision.
+ */
+export function ModeProvider({ children, mode }: { children: ReactNode; mode: Mode }) {
+  return <ModeCtx.Provider value={mode}>{children}</ModeCtx.Provider>;
 }
 
 export function useShare() {
-  return useContext(ModeCtx);
+  return useContext(ModeCtx).share;
 }
 
-/** Every internal link carries the mode with it, so share links stay shared. */
+export function usePrepAllowed() {
+  return useContext(ModeCtx).prepAllowed;
+}
+
+/** While previewing the share view from prep, links keep the preview on. */
 export function TLink({
   href,
   children,
   ...rest
 }: Omit<ComponentPropsWithoutRef<typeof Link>, "href"> & { href: string }) {
-  const share = useShare();
+  const { share, prepAllowed } = useContext(ModeCtx);
   return (
-    <Link href={share ? withShare(href) : href} {...rest}>
+    <Link href={prepAllowed && share ? withShare(href) : href} {...rest}>
       {children}
     </Link>
   );
@@ -43,7 +53,7 @@ export function withShare(href: string) {
   return hash ? `${q}#${hash}` : q;
 }
 
-/** The href that flips the current page into the other mode. */
+/** The href that flips the current page between prep and the share preview. */
 export function useToggleHref() {
   const share = useShare();
   const pathname = usePathname();

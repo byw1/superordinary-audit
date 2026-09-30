@@ -15,7 +15,7 @@ export const NINETY: Phase[] = [
     moves: [
       "Sit in every seat once: a creator-team sample review, a LIVE shift, a paid-media standup, a brand QBR, a month-end close with Finance.",
       "Rebuild the P&L by brand from raw data: GMV, contribution, and service cost per account. Rank the book both ways and find where the rankings disagree.",
-      "Map the eight workflows as they actually run here, against the version on this site, and mark where I was wrong.",
+      "Map the nine workflows as they actually run here, against the version on this site, and mark where I was wrong.",
     ],
     exit: "A one-page read of the book: which brands make money, which don’t, and the three workflow leaks costing the most.",
   },

@@ -1,8 +1,10 @@
+import { getView } from "@/lib/view";
 import AccountPnL from "@/components/AccountPnL";
 import UnitEconomics from "@/components/UnitEconomics";
 import { PageHead, PrepBlock, SectionHead } from "@/components/ui";
 
-export default function EconomicsPage() {
+export default async function EconomicsPage() {
+  const { share } = await getView();
   return (
     <div>
       <PageHead
@@ -44,6 +46,7 @@ export default function EconomicsPage() {
         </ol>
       </section>
 
+      {!share && (
       <div className="mt-12">
         <PrepBlock title="If they ask about my P&L experience">
           Be exact. I have not owned a P&L at this scale. What I have: final approval on every
@@ -54,6 +57,7 @@ export default function EconomicsPage() {
           contribution, not GMV. Ask how they currently report contribution by brand.
         </PrepBlock>
       </div>
+      )}
     </div>
   );
 }

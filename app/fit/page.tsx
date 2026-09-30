@@ -1,12 +1,10 @@
-"use client";
-
 import EvidenceList from "@/components/EvidenceList";
-import { Card, Eyebrow, PageHead, PrepBlock, PrepOnly, SectionHead } from "@/components/ui";
+import { Card, Eyebrow, PageHead, PrepBlock, SectionHead } from "@/components/ui";
 import { OBJECTIONS, REQUIREMENTS } from "@/data/fit";
-import { useShare } from "@/lib/mode";
+import { getView } from "@/lib/view";
 
-export default function FitPage() {
-  const share = useShare();
+export default async function FitPage() {
+  const { share } = await getView();
   return (
     <div>
       <PageHead
@@ -45,7 +43,7 @@ export default function FitPage() {
         ))}
       </div>
 
-      <PrepOnly>
+      {!share && (
         <section className="mt-16">
           <SectionHead
             title="The pushback, pre-aired"
@@ -60,15 +58,17 @@ export default function FitPage() {
             ))}
           </div>
         </section>
-      </PrepOnly>
+      )}
 
+      {!share && (
       <div className="mt-10">
-        <PrepBlock title="Before sending the share link">
+        <PrepBlock title="Before sending the link">
           Check which role the referral went toward. Hired has the FP&A (New Business Initiatives)
           posting on file with the referral through Fanfix; this audit is built for the TikTok Shop GM
           role. Decide whether I’m pursuing both, and say so to the referrer so nobody is surprised.
         </PrepBlock>
       </div>
+      )}
     </div>
   );
 }

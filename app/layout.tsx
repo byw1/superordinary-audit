@@ -7,6 +7,7 @@ import { Suspense } from "react";
 import "./globals.css";
 import Shell from "@/components/Shell";
 import { ModeProvider } from "@/lib/mode";
+import { getView } from "@/lib/view";
 
 const TITLE = "SuperOrdinary, read like an operator";
 const DESCRIPTION =
@@ -23,8 +24,7 @@ const host =
     ? `https://${process.env.RAILWAY_PUBLIC_DOMAIN}`
     : "http://localhost:3000");
 
-// The share flag lives in the query string; rendering per request lets
-// useSearchParams() resolve during SSR instead of bailing out to a blank page.
+// The view is decided per request (middleware.ts), so nothing is prerendered.
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
@@ -36,12 +36,13 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const mode = await getView();
   return (
     <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable}`}>
       <body className="min-h-screen antialiased">
         <Suspense fallback={null}>
-          <ModeProvider>
+          <ModeProvider mode={mode}>
             <Shell>{children}</Shell>
           </ModeProvider>
         </Suspense>

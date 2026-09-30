@@ -32,7 +32,7 @@ export default function EnginePage() {
     <div>
       <PageHead
         kicker="02 · The operating engine"
-        title="Eight workflows make up the job."
+        title="Nine workflows make up the job."
         sub="Every line under “What you’ll own” in the role breaks down into a workflow with stages, owners, and places where value leaks. Here is each one mapped the way I’d walk a new team through it, with the metrics I’d watch and the first change I’d make."
       />
 
@@ -43,7 +43,7 @@ export default function EnginePage() {
         </span>
       </div>
 
-      <div className="no-print mb-10 grid grid-cols-2 gap-2 sm:grid-cols-4">
+      <div className="no-print mb-10 grid grid-cols-2 gap-2 sm:grid-cols-3">
         {WORKFLOWS.map((w) => (
           <button
             key={w.id}

@@ -24,7 +24,7 @@ export const EVIDENCE: Evidence[] = [
     title: "A first-time hire who closed $500K",
     where: "Juggernaut Media Partners",
     story:
-      "Hired and trained a talent manager with no prior experience. She closed $500K in under eight months and was pacing toward $1.5M by year end. Hiring for slope, then building the training around it.",
+      "Hired and trained a talent manager with no prior experience, who closed $500K in under eight months and was pacing toward $1.5M by year end. Hiring for slope, then building the training around it.",
     tags: ["team", "revenue"],
   },
   {

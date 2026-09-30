@@ -1,5 +1,5 @@
 // workflows.ts — the TikTok Shop operating engine, broken into the workflows a
-// GM owns. Mechanics (sampling, Spark Ads, GMV Max, FBT, LIVE, mega-campaigns)
+// GM owns. Mechanics (sampling, GMV Max, FBT, LIVE, mega-campaigns)
 // are how TikTok Shop works publicly. How SuperOrdinary staffs and runs each
 // one internally is an outside-in read, and every page says so.
 
@@ -37,7 +37,7 @@ export const WORKFLOWS: Workflow[] = [
       "From first pitch to first sale. The launch window decides whether a brand renews, so the handoff from sales to operations is where most of the value is made or lost.",
     stages: [
       { name: "Prospect & qualify", owner: "Sales / BD", detail: "Category fit, margin headroom for commissions, inventory depth, existing TikTok presence, and whether the hero SKU demos well on video." },
-      { name: "Shop audit & pitch", owner: "Sales + Strategy", detail: "Audit the brand's current Shop (or its competitors'), size the opportunity, and propose the model: service fee, share of GMV, or distribution." },
+      { name: "Shop audit & pitch", owner: "Sales + Strategy", detail: "Audit the brand's current Shop (or its competitors'), size the opportunity, and propose the model: service fees, a share of GMV, or buy/sell, where SuperOrdinary owns the inventory." },
       { name: "Contract & model", owner: "Leadership + Finance", detail: "Commercial terms, who funds samples and ads, inventory ownership, and exit clauses. The model chosen here sets the P&L for the life of the account." },
       { name: "Shop build", owner: "Account Mgmt + Ops", detail: "Seller Center setup, catalog and listings, pricing parity, warehouse and FBT decisions, brand assets and claims review." },
       { name: "Launch plan", owner: "Account Mgmt", detail: "First 90 days: creator seeding wave, LIVE schedule, ads budget, first promo, and the GMV targets the renewal will be judged on." },
@@ -65,12 +65,12 @@ export const WORKFLOWS: Workflow[] = [
     oneLiner:
       "The core of the business. Every step from finding a creator to paying their commission is a conversion rate, and the rates multiply.",
     stages: [
-      { name: "Find creators", owner: "Creator team", detail: "Affiliate marketplace search, open and targeted collaborations, the agency's own creator network, and lookalikes of whoever is already selling the product." },
-      { name: "Invite & approve samples", owner: "Creator team", detail: "Targeted invitations with commission terms; approve or reject free-sample requests against a creator's history of posting and selling." },
-      { name: "Ship samples", owner: "Ops / 3PL", detail: "Sample fulfillment, tracking, and cost logging. Samples are real COGS plus shipping, and they add up fast." },
+      { name: "Find creators", owner: "Specialists + VAs", detail: "Affiliate marketplace search, open and targeted collaborations, the agency's own creator network, and lookalikes of whoever is already selling the product." },
+      { name: "Invite & approve samples", owner: "Specialists", detail: "Targeted invitations with commission terms; approve or reject free-sample requests against a creator's history of posting and selling." },
+      { name: "Ship samples", owner: "VAs + 3PL", detail: "Sample fulfillment, tracking, and cost logging. Samples are real COGS plus shipping, and they add up fast." },
       { name: "Content posts", owner: "Creator", detail: "Creator posts a shoppable video or goes LIVE. Brief quality and product-demo hooks decide whether it converts." },
       { name: "GMV & commission", owner: "Platform", detail: "Attributed orders pay the creator's commission rate, which is set per product and can be raised for top creators." },
-      { name: "Re-activate & tier", owner: "Creator team", detail: "Top sellers get higher commission, retainers, exclusive drops, and repeat samples. Non-posters are cut from future sampling." },
+      { name: "Re-activate & tier", owner: "Brand Lead + Specialists", detail: "Top sellers get higher commission, retainers, exclusive drops, and repeat samples. Non-posters are cut from future sampling." },
     ],
     leaks: [
       { at: 2, what: "Samples that never become a post. The single biggest silent cost in the engine, and usually untracked." },
@@ -84,8 +84,8 @@ export const WORKFLOWS: Workflow[] = [
       { name: "Top-20 creator concentration", why: "How exposed GMV is to a few creators leaving or going quiet." },
     ],
     myMove:
-      "Instrument the funnel per brand, per creator: sample shipped, posted, sold. Then rank creators by GMV per sample and route the next sample wave accordingly. Build an early-warning read on creators going quiet or moving to a competitor, the same way I tracked talent moving between agencies.",
-    evidence: ["influencer-platform", "creator-intel", "jugg-scope"],
+      "Instrument the funnel per brand, per creator: sample shipped, posted, sold. Then rank creators by GMV per sample and route the next sample wave accordingly. Give the offshore VA team a scored queue instead of a list, and build an early-warning read on creators going quiet or moving to a competitor, the same way I tracked talent moving between agencies.",
+    evidence: ["influencer-platform", "creator-intel", "cadence"],
   },
   {
     id: "content",
@@ -93,24 +93,24 @@ export const WORKFLOWS: Workflow[] = [
     name: "Amplify what's already working",
     jd: "Marketing & Merchandising · Performance & Analytics",
     oneLiner:
-      "Paid media on TikTok Shop works best as an amplifier of proven organic content, not as a separate channel with its own creative.",
+      "Since July 2025, GMV Max is the only campaign type for Shop ads. The algorithm picks the audience; the operator’s levers are which content it gets and what return it’s told to hit.",
     stages: [
       { name: "Spot winners", owner: "Paid + Creator", detail: "Surface affiliate and brand videos with strong early conversion in the first 24–72 hours." },
-      { name: "Secure rights", owner: "Creator team", detail: "Get Spark Ads authorization codes from creators so their post can run as an ad on their handle." },
-      { name: "Launch & scale", owner: "Paid media", detail: "GMV Max and Shop Ads campaigns, budget set against target ROAS and the brand's contribution margin." },
+      { name: "Authorize content", owner: "Specialists", detail: "Get creators’ authorization so their best posts can run in the brand’s ad campaigns on their own handle." },
+      { name: "Set the ROI target", owner: "Paid media", detail: "Product and LIVE GMV Max campaigns, with the ROI target and budget set from the brand’s contribution margin." },
       { name: "Refresh creative", owner: "Creative + Creator", detail: "Winning hooks get briefed back to creators and the in-house team for iterations before fatigue sets in." },
     ],
     leaks: [
-      { at: 1, what: "Winners that never get amplified because the Spark code wasn't requested in time." },
+      { at: 1, what: "Winning posts that never reach the campaign because nobody requested authorization in time." },
       { at: 2, what: "ROAS targets set from revenue, not contribution margin, so ads 'work' while the brand loses money." },
     ],
     kpis: [
       { name: "ROAS vs. breakeven ROAS", why: "Breakeven depends on each brand's margin. One number across brands is wrong." },
       { name: "Share of GMV from ads", why: "Too high and the brand is renting growth. Too low and proven content is left unscaled." },
-      { name: "Time from post to Spark", why: "Speed is the edge. Winners decay in days." },
+      { name: "Time from post to authorized", why: "Speed is the edge. Winners decay in days." },
     ],
     myMove:
-      "Set a breakeven ROAS per brand from its real contribution margin, and make it the budget rule. Automate the winner-to-Spark pipeline so any post over a conversion threshold gets flagged for rights and budget within a day.",
+      "Set a breakeven ROAS per brand from its real contribution margin, and make it the budget rule. Automate the winner pipeline so any post over a conversion threshold gets flagged for authorization and fed to GMV Max within a day. With fewer targeting controls, content selection is the job.",
     evidence: ["edit-division", "gtm-cut"],
   },
   {
@@ -121,10 +121,10 @@ export const WORKFLOWS: Workflow[] = [
     oneLiner:
       "LIVE is a production business inside the commerce business: hours, hosts, and studio time are fixed costs that only pay back with the right product, offer and schedule.",
     stages: [
-      { name: "Schedule", owner: "LIVE team", detail: "Slots matched to audience peaks, mega-campaign days, and product drops." },
+      { name: "Schedule", owner: "LIVE team", detail: "Daily brand lives and multi-brand Mega Lives, matched to audience peaks, campaign days and product drops." },
       { name: "Prep run-of-show", owner: "LIVE + Account Mgmt", detail: "Offer ladder, flash deals, pinned products, host script, and compliance-safe claims." },
       { name: "Go live", owner: "Hosts + Producer", detail: "In-house hosts, brand talent, or affiliate creators; live moderation and real-time price or offer changes." },
-      { name: "Boost", owner: "Paid media", detail: "LIVE Shopping Ads to push traffic into the room during the highest-converting windows." },
+      { name: "Boost", owner: "Paid media", detail: "LIVE GMV Max to push traffic into the room during the highest-converting windows." },
       { name: "Post-mortem", owner: "LIVE team", detail: "GMV per hour, viewer-to-buyer rate, and which segments sold, clipped into short-form for replay." },
     ],
     leaks: [
@@ -168,8 +168,34 @@ export const WORKFLOWS: Workflow[] = [
     evidence: ["ecom-launch", "gtm-cut"],
   },
   {
-    id: "supply",
+    id: "search",
     n: "06",
+    name: "Win the Shop tab",
+    jd: "Marketing & Merchandising · Social Commerce Strategy",
+    oneLiner:
+      "The Shop tab passed half of attributed U.S. GMV in H1 2026. Shoppers now search TikTok the way they search Amazon, so listings, reviews and price carry as much weight as the next viral video.",
+    stages: [
+      { name: "Keyword & title", owner: "Specialists", detail: "Titles and attributes written for how people search on TikTok, not how the brand names its products." },
+      { name: "Listing content", owner: "Specialists + Creative", detail: "Main image, video on the listing, and bundles that lift order value." },
+      { name: "Price & offers", owner: "Brand Lead", detail: "Price checked against Amazon and the brand’s own site; coupons that win the product card without breaking the margin floor." },
+      { name: "Reviews & rating", owner: "Specialists + CX", detail: "Early review velocity on launches, and fast response to low ratings." },
+    ],
+    leaks: [
+      { at: 0, what: "Listings written once at launch and never touched again, while search volume moves to the Shop tab." },
+      { at: 2, what: "Prices undercut on TikTok to win video, which then undercuts the brand’s Amazon and retail pricing." },
+    ],
+    kpis: [
+      { name: "Shop-tab share of GMV by brand", why: "Shows which brands depend on video and which have durable search demand." },
+      { name: "Listing conversion rate", why: "The merchandising team’s core number." },
+      { name: "Rating and review count on hero SKUs", why: "The cheapest conversion lever there is." },
+    ],
+    myMove:
+      "Split every brand’s GMV by source (video, LIVE, Shop tab) on the scorecard, and give the Shop tab a named owner in each pod. A brand at 20% Shop-tab share while the platform is at 51% has a merchandising gap, not a creator gap.",
+    evidence: ["ecom-holdco", "ecom-launch"],
+  },
+  {
+    id: "supply",
+    n: "07",
     name: "Keep it in stock and on time",
     jd: "TikTok Shop Operations (inventory considerations)",
     oneLiner:
@@ -195,7 +221,7 @@ export const WORKFLOWS: Workflow[] = [
   },
   {
     id: "health",
-    n: "07",
+    n: "08",
     name: "Protect account health",
     jd: "TikTok Shop Operations · Platform & Market Expertise",
     oneLiner:
@@ -219,7 +245,7 @@ export const WORKFLOWS: Workflow[] = [
   },
   {
     id: "cadence",
-    n: "08",
+    n: "09",
     name: "Run the operating cadence",
     jd: "P&L · Performance & Analytics · Team Leadership · Cross-Functional",
     oneLiner:

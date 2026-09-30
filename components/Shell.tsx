@@ -2,7 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import { useCallback, type ReactNode } from "react";
-import { TLink, useShare, useToggleHref } from "@/lib/mode";
+import { TLink, usePrepAllowed, useShare, useToggleHref } from "@/lib/mode";
 
 const NAV = [
   { href: "/", label: "Overview" },
@@ -16,6 +16,7 @@ const NAV = [
 
 export default function Shell({ children }: { children: ReactNode }) {
   const pathname = usePathname();
+  const prepAllowed = usePrepAllowed();
   const isActive = useCallback(
     (href: string) => (href === "/" ? pathname === "/" : pathname.startsWith(href)),
     [pathname],
@@ -48,7 +49,7 @@ export default function Shell({ children }: { children: ReactNode }) {
             ))}
           </nav>
 
-          <ModeSwitch />
+          {prepAllowed && <ModeSwitch />}
         </div>
       </header>
 
@@ -67,7 +68,7 @@ function ModeSwitch() {
       href={href}
       title={
         share
-          ? "Showing the share view. Switch to the private prep view."
+          ? "Previewing exactly what a recipient sees. Switch back to prep."
           : "Showing the private prep view (objections, referral notes, candid reads). Switch to the share view."
       }
       className="no-print flex shrink-0 items-center rounded-full border border-line-2 p-0.5 font-mono text-[10px] uppercase tracking-[0.1em]"

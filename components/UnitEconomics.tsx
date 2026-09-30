@@ -22,7 +22,7 @@ const FIELDS: Field[] = [
   { key: "price", label: "Selling price", min: 10, max: 120, step: 1, unit: "$", hint: "List price of the hero SKU." },
   { key: "discount", label: "Average discount", min: 0, max: 0.4, step: 0.01, unit: "%", hint: "All seller-funded discounts stacked, blended across the month." },
   { key: "cogs", label: "COGS", min: 0.1, max: 0.6, step: 0.01, unit: "%", hint: "Landed product cost as a share of list price." },
-  { key: "referral", label: "Platform referral fee", min: 0.02, max: 0.12, step: 0.005, unit: "%", hint: "TikTok Shop's per-order fee on the sale price." },
+  { key: "referral", label: "Platform referral fee", min: 0.02, max: 0.12, step: 0.005, unit: "%", hint: "TikTok Shop's fee on each sale. Reported to have risen from 6% to 8% for most U.S. categories in Aug 2026." },
   { key: "affiliateShare", label: "Orders via affiliates", min: 0, max: 1, step: 0.05, unit: "%", hint: "Share of orders attributed to creator content or LIVE." },
   { key: "commission", label: "Creator commission", min: 0, max: 0.4, step: 0.01, unit: "%", hint: "Commission rate paid on affiliate-attributed orders." },
   { key: "adShare", label: "Ad spend", min: 0, max: 0.4, step: 0.01, unit: "%", hint: "Paid media (GMV Max, Spark, LIVE ads) as a share of GMV." },

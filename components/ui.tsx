@@ -1,7 +1,7 @@
-"use client";
-
 import type { ReactNode } from "react";
-import { useShare } from "@/lib/mode";
+
+// Server-safe primitives. Prep-only blocks are gated by the caller on the
+// server (see lib/view.ts), never hidden on the client.
 
 export function Eyebrow({ children, className = "" }: { children: ReactNode; className?: string }) {
   return <div className={`u-label ${className}`}>{children}</div>;
@@ -112,17 +112,9 @@ export function Basis({ kind }: { kind: "sourced" | "inferred" | "illustrative" 
   );
 }
 
-/** Renders only in the private prep view. Never leaks into ?share. */
-export function PrepOnly({ children }: { children: ReactNode }) {
-  const share = useShare();
-  if (share) return null;
-  return <>{children}</>;
-}
-
-/** A visual flag that a block is prep-only, so I know what the reader won't see. */
+/** A visual flag that a block is prep-only. Callers render it only when !share. */
 export function PrepBlock({ title, children }: { title: string; children: ReactNode }) {
   return (
-    <PrepOnly>
       <div className="rounded-md border border-dashed border-ink/40 bg-sunk/60 p-5 sm:p-6">
         <div className="mb-3 flex items-center gap-2">
           <span className="rounded-sm bg-ink px-1.5 py-[1px] font-mono text-[9.5px] uppercase tracking-[0.1em] text-paper">
@@ -132,7 +124,6 @@ export function PrepBlock({ title, children }: { title: string; children: ReactN
         </div>
         <div className="u-prose text-[14.5px]">{children}</div>
       </div>
-    </PrepOnly>
   );
 }
 
