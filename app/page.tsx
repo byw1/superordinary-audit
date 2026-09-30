@@ -2,6 +2,8 @@ import { getView } from "@/lib/view";
 import BusinessMap from "@/components/BusinessMap";
 import { Basis, Card, Eyebrow, PageHead, PrepBlock, SectionHead, Stat } from "@/components/ui";
 import {
+  COMPETITORS,
+  EDGE_READ,
   HEADLINE_FACTS,
   MARKET_FACTS,
   ORG_SIGNALS,
@@ -89,6 +91,39 @@ export default async function Home() {
               </a>
             </Card>
           ))}
+        </div>
+      </section>
+
+      <section className="mt-16">
+        <SectionHead
+          title="The field"
+          sub="Who else is selling TikTok Shop growth to the same brands. Most “top agency” lists are published by agencies, so their numbers are claims, not rankings."
+        />
+        <div className="rounded-md border border-line bg-card">
+          {COMPETITORS.map((c, i) => (
+            <div
+              key={c.name}
+              className={`grid gap-2 px-5 py-4 md:grid-cols-[170px_1.3fr_1fr] md:gap-6 ${i ? "border-t border-line" : ""}`}
+            >
+              <div>
+                <div className="text-[14.5px] font-medium text-ink">{c.name}</div>
+                <a href={c.url} className="font-mono text-[9.5px] uppercase tracking-[0.08em] text-faint hover:text-ink">
+                  {c.source} ↗
+                </a>
+              </div>
+              <div className="text-[13.5px] leading-[1.55] text-ink-2">{c.profile}</div>
+              <div className="text-[13.5px] leading-[1.55] text-ink">{c.angle}</div>
+            </div>
+          ))}
+        </div>
+        <div className="mt-4">
+          <Card tone="live">
+            <div className="mb-2 flex items-center gap-3">
+              <Eyebrow className="text-live-deep">Where SuperOrdinary is different</Eyebrow>
+              <Basis kind="inferred" />
+            </div>
+            <p className="text-[15px] leading-[1.6] text-ink">{EDGE_READ}</p>
+          </Card>
         </div>
       </section>
 

@@ -6,6 +6,7 @@ import EvidenceList from "@/components/EvidenceList";
 import StageFlow from "@/components/StageFlow";
 import { Basis, Card, Eyebrow, PageHead } from "@/components/ui";
 import { WORKFLOWS, WORKFLOW_BY_ID } from "@/data/workflows";
+import { TLink } from "@/lib/mode";
 
 export default function EnginePage() {
   const params = useSearchParams();
@@ -91,6 +92,14 @@ export default function EnginePage() {
           <Card tone="live">
             <Eyebrow className="mb-4 text-live-deep">The first change I’d make</Eyebrow>
             <p className="text-[15.5px] leading-[1.6] text-ink">{wf.myMove}</p>
+            {["creators", "content", "promos", "win"].includes(wf.id) && (
+              <TLink
+                href="/economics"
+                className="mt-4 inline-block font-mono text-[10.5px] uppercase tracking-[0.1em] text-live-deep underline decoration-live/40 underline-offset-4 hover:decoration-live"
+              >
+                Run the numbers →
+              </TLink>
+            )}
           </Card>
         </div>
 

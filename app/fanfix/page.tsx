@@ -99,8 +99,9 @@ export default async function FanfixPage() {
         <PrepBlock title="The Fanfix connection">
           <ul className="list-disc space-y-2 pl-5">
             <li>
-              My contact at Fanfix is the warm path in. Confirm his exact title before naming him: Hired has
-              Connor McCrory as President of Fanfix; public releases name Dylan Harari as CEO.
+              <strong className="text-ink">Connor McCrory is President of Fanfix</strong> (confirmed in person at
+              their office; not public, so it never goes on the share view). Dylan Harari is CEO publicly.
+              Connor is the warm path in. Say “a friend at Fanfix” unless he’s fine being named.
             </li>
             <li>
               Ask him before the interview: how are Fanfix creators routed into TikTok Shop affiliate and

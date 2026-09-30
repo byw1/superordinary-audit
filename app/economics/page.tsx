@@ -1,5 +1,6 @@
 import { getView } from "@/lib/view";
 import AccountPnL from "@/components/AccountPnL";
+import CreatorFunnel from "@/components/CreatorFunnel";
 import UnitEconomics from "@/components/UnitEconomics";
 import { PageHead, PrepBlock, SectionHead } from "@/components/ui";
 
@@ -10,7 +11,7 @@ export default async function EconomicsPage() {
       <PageHead
         kicker="03 · The P&L"
         title="GMV is the headline. Contribution is the job."
-        sub="The role owns revenue, gross margin, contribution and forecasting. That starts with one order of one SKU and rolls up to one brand account, then to the book. Both models below are live: move the inputs and watch where margin goes."
+        sub="The role owns revenue, gross margin, contribution and forecasting. That starts with one order of one SKU, then one month of creator sampling, then one brand account. All three models below are live: move the inputs and watch where margin goes."
       />
 
       <section>
@@ -19,6 +20,14 @@ export default async function EconomicsPage() {
           sub="Where each dollar of a TikTok Shop sale goes for a brand, and the ad efficiency it needs to break even. Breakeven ROAS is different for every brand, which is why one ROAS target across a portfolio is wrong."
         />
         <UnitEconomics />
+      </section>
+
+      <section className="mt-16">
+        <SectionHead
+          title="One sample wave"
+          sub="Free samples to creators are the engine’s biggest discretionary cost, and most of them never turn into a post. Every stage is a conversion rate, and the rates multiply."
+        />
+        <CreatorFunnel />
       </section>
 
       <section className="mt-16">

@@ -44,6 +44,11 @@ export function middleware(req: NextRequest) {
   const prepAllowed = !!key && req.cookies.get(COOKIE)?.value === key;
   const view = prepAllowed && !url.searchParams.has("share") ? "prep" : "share";
 
+  // The prep page doesn't exist for anyone without the key.
+  if (!prepAllowed && url.pathname.startsWith("/prep")) {
+    return new NextResponse("Not found", { status: 404 });
+  }
+
   // Overwrite rather than trust anything a client sent under these names.
   const headers = new Headers(req.headers);
   headers.set("x-so-prep-allowed", prepAllowed ? "1" : "0");

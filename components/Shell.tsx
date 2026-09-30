@@ -17,6 +17,7 @@ const NAV = [
 export default function Shell({ children }: { children: ReactNode }) {
   const pathname = usePathname();
   const prepAllowed = usePrepAllowed();
+  const share = useShare();
   const isActive = useCallback(
     (href: string) => (href === "/" ? pathname === "/" : pathname.startsWith(href)),
     [pathname],
@@ -34,7 +35,7 @@ export default function Shell({ children }: { children: ReactNode }) {
           </TLink>
 
           <nav className="flex min-w-0 flex-1 items-center gap-4 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-            {NAV.map((n) => (
+            {(prepAllowed && !share ? [...NAV, { href: "/prep", label: "Interview prep" }] : NAV).map((n) => (
               <TLink
                 key={n.href}
                 href={n.href}
@@ -87,7 +88,12 @@ function Footer() {
   return (
     <footer className="border-t border-line">
       <div className="mx-auto flex w-full max-w-[1160px] flex-wrap items-center justify-between gap-3 px-4 py-6 font-mono text-[10.5px] uppercase tracking-[0.1em] text-faint sm:px-8">
-        <span>Prepared by William Lee · outside-in, public sources · Sep 2026</span>
+        <span>
+          Prepared by William Lee · outside-in, public sources ·{" "}
+          <TLink href="/sources" className="underline underline-offset-4 hover:text-ink">
+            Sources
+          </TLink>
+        </span>
         <span className="flex gap-4">
           <a href="mailto:william@bywilliaml.com" className="hover:text-ink">
             william@bywilliaml.com

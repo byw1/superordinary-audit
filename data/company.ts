@@ -118,3 +118,45 @@ export const BRIDGES: { name: string; mechanism: string; proof: string; risk: st
     risk: "Production cost ahead of proven conversion. It has to be measured like LIVE hours.",
   },
 ];
+
+/** The field. Agency-published claims are the agencies' own and labelled so. */
+export const COMPETITORS: { name: string; profile: string; angle: string; source: string; url?: string }[] = [
+  {
+    name: "Pattern",
+    profile: "Public since September 2025 (Nasdaq: PTRN), ~$2.5B FY2025 revenue. Multi-marketplace, buy/sell model. TikTok Shop’s 2025 Strategic Partner of the Year.",
+    angle: "The closest analog and the likely public comparable: same buy/sell model, far larger, Amazon-first.",
+    source: "Nasdaq; Business Wire",
+    url: "https://www.nasdaq.com/press-release/pattern-announces-closing-initial-public-offering-2025-09-23",
+  },
+  {
+    name: "Third",
+    profile: "Formed by the March 2026 merger of Orca and Sapphire Studios; ~70 people. Clients include Estée Lauder, e.l.f. and Mars.",
+    angle: "Beauty-heavy TikTok Shop specialist competing for the same enterprise brands.",
+    source: "Net Influencer",
+    url: "https://www.netinfluencer.com/social-commerce-agencies-orca-and-sapphire-studios-merge-to-form-third/",
+  },
+  {
+    name: "Media Labs",
+    profile: "TikTok Shop partner claiming $500M+ in managed GMV across 150+ brands.",
+    angle: "Scale-focused agency model; claims are self-reported.",
+    source: "Company site (self-reported)",
+    url: "https://medialabs-co.com/tiktok-shop-agency",
+  },
+  {
+    name: "Stella Rising",
+    profile: "Beauty TikTok Shop partner working with Laneige, Sulwhasoo and Real Techniques.",
+    angle: "Direct overlap in prestige beauty, including a brand on SuperOrdinary’s logo wall.",
+    source: "The Social Shepherd (agency list)",
+    url: "https://thesocialshepherd.com/blog/top-tiktok-shop-agencies-us",
+  },
+  {
+    name: "Performance-only shops",
+    profile: "TBAR Partners, Social Commerce Club and others, paid mainly on a share of GMV rather than retainers.",
+    angle: "Price pressure on service fees, especially for mid-size brands.",
+    source: "Hubfluence (agency list)",
+    url: "https://www.hubfluence.io/blog/best-tiktok-shop-agencies",
+  },
+];
+
+export const EDGE_READ =
+  "What the others don’t combine in one company: a China-honed LIVE playbook (57,000+ hours of livestreams), a buy/sell balance sheet, an owned creator platform, and a microdrama studio. The risk is the flip side of breadth: each line needs its own operating discipline, and the TikTok Shop engine is the one the rest depend on.";
