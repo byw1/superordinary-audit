@@ -52,7 +52,7 @@ export const REQUIREMENTS: Requirement[] = [
   {
     req: "Analytical and financial acumen: unit economics, decisions from performance data",
     answer:
-      "The economics and scorecard pages in this audit are the work sample: breakeven ROAS per brand, service vs. distribution economics by scale, and a portfolio board built to surface decisions.",
+      "The numbers chapter of this site is the work sample: breakeven ROAS per brand, the creator sampling funnel, and service vs. buy/sell economics by scale.",
     evidence: ["collections", "gtm-cut"],
   },
   {

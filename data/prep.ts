@@ -2,17 +2,17 @@
 // 404s without the prep key, so none of this ever reaches a recipient.
 
 export const WALKTHROUGH: { href: string; page: string; say: string; time: string }[] = [
-  { href: "/", page: "Overview", time: "0:00", say: "“I wanted to understand the business before talking about the job, so I mapped it from the outside. Here’s how I think product, content and money move, and what changed under you in the last year: GMV Max, the fee change, the Shop tab passing half of GMV.” Stop and ask what I got wrong." },
-  { href: "/engine?w=creators", page: "Workflows → creator engine", time: "1:00", say: "“Every line under ‘What you’ll own’ is a workflow. This is the one everything depends on. The leaks in red are where I’d look first: samples that never post, and top creators left on default terms.”" },
-  { href: "/economics", page: "Economics", time: "2:00", say: "Move the post-rate slider live. “Ten points of post rate is worth more than any budget increase. And breakeven ROAS is different per brand, so one ROAS target across the book is wrong.” Then the service vs. buy/sell crossover." },
-  { href: "/scorecard", page: "Scorecard", time: "3:00", say: "“This is the report I’d want every Monday. Brand B is the tell: second-biggest account, ads below breakeven, samples not converting. The fix is the creator funnel, not more budget.”" },
-  { href: "/plan", page: "First 90 days", time: "4:00", say: "“Learn the book, fix the biggest leak, then grow. The first month is for finding out where this site is wrong.” Then turn it into questions: pick two from the list." },
+  { href: "/", page: "Hero", time: "0:00", say: "Let the scene move for a second. “I wanted to understand the business before talking about the job. The core is the Shop; the three orbits are video, LIVE and the Shop tab; creators flow in from the edge; the red is money.”" },
+  { href: "/#business", page: "01 · The business", time: "0:45", say: "“Here’s how I think product, content and money move, and what changed under you in fifteen months: GMV Max, the fee change, the Shop tab passing half of GMV.” Stop and ask what I got wrong." },
+  { href: "/#engine", page: "02 · The engine → creator engine", time: "1:45", say: "“Every line of the role is a workflow. This is the one everything depends on. The red stages are where I’d look first: samples that never post, and top creators left on default terms.”" },
+  { href: "/#numbers", page: "03 · The numbers", time: "2:45", say: "Move the post-rate slider live and let the funnel react. “Ten points of post rate is worth more than any budget increase.” Then One order: breakeven ROAS is different for every brand." },
+  { href: "/#plan", page: "04 · The plan", time: "3:45", say: "“Learn the book, fix the biggest leak, then grow. And if I start in Q4, Black Friday comes first, so the plan counts back from it.” Then turn it into questions." },
 ];
 
 export const LIKELY_QUESTIONS: { q: string; outline: string; story?: string }[] = [
   {
     q: "Walk me through how you’d run a TikTok Shop P&L.",
-    outline: "Order → account → book. Contribution, not GMV. Breakeven ROAS per brand from its own margin. Monthly contribution by brand next to the GMV ranking; the gap is where effort is mispriced. Show the economics page.",
+    outline: "Order → account → book. Contribution, not GMV. Breakeven ROAS per brand from its own margin. Monthly contribution by brand next to the GMV ranking; the gap is where effort is mispriced. Show The numbers chapter.",
     story: "Producer Labs: cut ~$15K/month in consultant spend that looked like growth; weekly AR/AP, ~$25K collected.",
   },
   {
@@ -49,7 +49,7 @@ export const LIKELY_QUESTIONS: { q: string; outline: string; story?: string }[] 
   },
   {
     q: "If you started in November, what would you do first?",
-    outline: "Black Friday comes first, and most of it is already decided by then: samples, inventory and LIVE schedules have lead times. So: join the war room, protect margin (discount floors, ads vs. breakeven), and keep stock and dispatch clean. Save the rebuild for December, starting with the event readout by brand. Point to the Q4 page.",
+    outline: "Black Friday comes first, and most of it is already decided by then: samples, inventory and LIVE schedules have lead times. So: join the war room, protect margin (discount floors, ads vs. breakeven), and keep stock and dispatch clean. Save the rebuild for December, starting with the event readout by brand. Point to the Black Friday timeline in The plan.",
   },
   {
     q: "What would you do differently from how we operate today?",
@@ -73,6 +73,29 @@ export const CHECKLIST: string[] = [
   "Ask Connor: how are Fanfix creators routed into TikTok Shop today, and who at SuperOrdinary should I know?",
   "Tell Connor which role I’m going for (the referral in Hired went toward the FP&A posting).",
   "Open the site in the share view once more before the call, so I know exactly what they see.",
-  "Have the economics page open in a tab, sliders at defaults, ready to move live.",
-  "Pick the two questions from First 90 days I most want answered.",
+  "Have the site open at The numbers, sliders at defaults, ready to move live.",
+  "Pick the two questions from the closing section I most want answered.",
 ];
+
+export const WHO: { name: string; note: string }[] = [
+  { name: "Julian Reis · founder & CEO", note: "Ex-macro trader; co-founded Skin Laundry. Public themes: “China is four years ahead,” TikTok Shop from $15B to $500B, brand sites becoming obsolete, brands must think like media companies, the first $10M livestream. Podcast: On the Record with Julian Reis." },
+  { name: "Derek Trau · co-founder & COO", note: "The posting says the GM partners with the COO. Likely in the loop." },
+  { name: "Gary Sang · VP TikTok Operations", note: "Ex-Orca, credited with TikTok Shop U.S.’s first-ever sale. The GM may sit above or beside him. Don’t guess out loud; ask how the seats relate." },
+  { name: "Laura Sposato · SVP Finance", note: "The P&L partner." },
+  { name: "Connor McCrory · President, Fanfix", note: "Confirmed in person at their office; not public, so never on the share view. Dylan Harari is CEO publicly. Connor is the warm path in; say “a friend at Fanfix” unless he’s fine being named." },
+];
+
+export const CAREFUL: string[] = [
+  "The 2026 outlook ($300M) is below the $350M the company expected in 2023.",
+  "Headcount went from 500+ to ~300 (the posting says 140–150, likely U.S. only).",
+  "Both Fanfix founders have left (Gestetner April 2025, Pompan ~March 2026); one report cited creator complaints about fees and billing.",
+  "Fanfix’s public user count is inconsistent (6.3M in March vs. “63+ million” in June 2026).",
+  "Brand-safety optics of a subscription-messaging platform next to Disney and Crocs. Don’t raise it unprompted.",
+  "If revenue comes up, ask whether it’s booked gross or net, and how much is TikTok Shop.",
+];
+
+export const PNL_NOTE =
+  "Be exact: I have not owned a P&L at this scale. What I have: final approval on every payment at Juggernaut (AP via Ramp, bookkeeping, payroll), the weekly AR/AP review and ~$25K in collections at Producer Labs, cutting ~$15K/month of consultant spend that wasn’t producing, and my own product to $100K in 16 days where velocity outran cash. Then show the numbers chapter: I think in contribution, not GMV.";
+
+export const REFERRAL_NOTE =
+  "Hired has the referral through Connor going toward the FP&A (New Business Initiatives) posting; this site is built for the TikTok Shop GM role. Decide whether I’m pursuing both, and tell Connor so nobody is surprised.";

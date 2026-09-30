@@ -56,11 +56,11 @@ export function Card({
   tone?: "plain" | "live" | "sunk";
 }) {
   const tones = {
-    plain: "border-line bg-card",
-    live: "border-line bg-card border-l-[3px] border-l-live",
-    sunk: "border-line bg-sunk",
+    plain: "u-glass",
+    live: "border border-live/30 bg-live/[0.06]",
+    sunk: "border border-white/[0.06] bg-white/[0.02]",
   };
-  return <div className={`rounded-md border p-5 sm:p-6 ${tones[tone]} ${className}`}>{children}</div>;
+  return <div className={`rounded-2xl p-5 sm:p-6 ${tones[tone]} ${className}`}>{children}</div>;
 }
 
 export function Chip({

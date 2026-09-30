@@ -4,21 +4,25 @@ An outside-in audit of SuperOrdinary's TikTok Shop business, built as interview
 prep for the **GM / VP, TikTok Shop Operations** role and as something I can
 send to the recruiter or hiring team afterwards.
 
-The spine of the site is the job description's "What you'll own" list. Each
-line becomes a workflow, a model, or a report.
+One page, one story, in five chapters, for a decision-maker to scroll in five
+minutes:
 
-| Route | What it is |
+| Chapter | What it is |
 | --- | --- |
-| `/` | The business on one page: what SuperOrdinary is, how money and product move, where the GM sits |
-| `/engine` | The nine workflows the role owns, each with stages, leaks, KPIs, the first change I'd make, and my evidence. Deep-link with `?w=<id>` |
-| `/economics` | Three live models: one order (breakeven ROAS), one month of creator sampling, and one brand account under service vs. buy/sell terms |
-| `/scorecard` | KPI trees, a sample portfolio board, and the operating cadence |
-| `/fanfix` | Fanfix and the rest of the group, and where they could meet TikTok Shop |
-| `/plan` | First 90 days and the questions I'd ask |
-| `/q4` | The Black Friday run-up, counted back from Thanksgiving |
-| `/sources` | Every public source, plus where sources disagree |
-| `/prep` | Prep view only (404 otherwise): walkthrough script, likely questions, numbers to know |
-| `/fit` | The posting's requirements, answered with evidence |
+| Hero | Real-time 3D flywheel: the Shop at the core, three orbits (video, LIVE, the Shop tab), creators flowing in, money in red |
+| 01 The business | How money moves, the five revenue lines, four platform shifts, Fanfix, the competitive field |
+| 02 The engine | Nine workflows the role owns, each with stages, leaks and the first change I'd make |
+| 03 The numbers | Three live models: a 3D creator-sampling funnel, one order (breakeven ROAS), one account (service vs. buy/sell) |
+| 04 The plan | First 90 days, and the Black Friday run-up counted back from Thanksgiving |
+| 05 Why me | Six proof points and contact |
+
+`/prep` (key only, 404 otherwise) holds everything for me: the walkthrough
+script, likely questions, the pushback and gaps, who's who, and what to handle
+carefully. The old multi-page URLs redirect to their chapter.
+
+3D is three.js via React Three Fiber, lazy-loaded so text paints first, paused
+whenever the canvas is off screen, and rendered once (no animation) for
+reduced-motion users.
 
 ## Public vs. prep
 
@@ -45,9 +49,7 @@ portfolio board uses invented brands.
 
 ## Data
 
-No database, no runtime fetches. Everything renders from `data/*.ts`:
-`company.ts` (research), `workflows.ts`, `economics.ts`, `scorecard.ts`,
-`plan.ts`, `fit.ts`, `evidence.ts` (my track record).
+No database, no runtime fetches. Everything renders from `data/*.ts`.
 
 ## Run it
 

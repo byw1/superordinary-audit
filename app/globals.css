@@ -1,20 +1,20 @@
 @import "tailwindcss";
 
 @theme {
-  /* Paper-and-ink operating manual. One accent — "live" red — used for what
-     moves money or needs attention. Everything else is ink at intensities. */
-  --color-paper: #f5f2eb;
-  --color-card: #fbfaf6;
-  --color-sunk: #ece8de;
-  --color-line: #dcd6c8;
-  --color-line-2: #c4bcaa;
-  --color-ink: #16140f;
-  --color-ink-2: #3d3a33;
-  --color-mute: #6b665b;
-  --color-faint: #8a8475;
-  --color-live: #e0412b;
-  --color-live-deep: #b3301d;
-  --color-live-wash: #f7e1da;
+  /* Midnight and one warm accent. The accent marks what moves money or needs
+     attention; everything else is light at different intensities. */
+  --color-paper: #09090b;
+  --color-card: #111114;
+  --color-sunk: #16161a;
+  --color-line: #232329;
+  --color-line-2: #34343c;
+  --color-ink: #f4f1eb;
+  --color-ink-2: #bdb8ae;
+  --color-mute: #8d887e;
+  --color-faint: #6d685f;
+  --color-live: #ff5a36;
+  --color-live-deep: #ff8f73;
+  --color-live-wash: rgba(255, 90, 54, 0.09);
 
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, "SF Mono", Menlo, monospace;
@@ -22,7 +22,7 @@
 }
 
 :root {
-  color-scheme: light;
+  color-scheme: dark;
 }
 
 html,
@@ -110,8 +110,53 @@ body {
 /* ── Chrome ─────────────────────────────────────────────────────────────── */
 
 ::selection {
-  background: var(--color-live-wash);
-  color: var(--color-ink);
+  background: rgba(255, 90, 54, 0.35);
+  color: #fff;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Soft light from above, so the page has depth without decoration. */
+body {
+  background:
+    radial-gradient(1200px 600px at 50% -200px, rgba(255, 90, 54, 0.07), transparent 70%),
+    var(--color-paper);
+}
+
+.u-glass {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.012));
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    0 30px 60px -30px rgba(0, 0, 0, 0.6);
+}
+
+.u-grad-text {
+  background: linear-gradient(100deg, #fff 0%, #ffd2c4 45%, #ff5a36 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Scroll reveal: elements start low and faded, and settle in when seen. */
+.u-reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 900ms cubic-bezier(0.2, 0.7, 0.2, 1),
+    transform 900ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.u-reveal.is-in {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .u-reveal {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 :focus-visible {
@@ -125,11 +170,13 @@ input[type="range"] {
 
 @media print {
   header,
-  .no-print {
+  .no-print,
+  canvas {
     display: none !important;
   }
-  body {
-    background: #fff;
+  .u-reveal {
+    opacity: 1 !important;
+    transform: none !important;
   }
 }
 
@@ -148,4 +195,48 @@ input[type="range"] {
   .rounded-md {
     break-inside: avoid;
   }
+}
+
+/* Range inputs: a thin track and a glowing thumb. */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 18px;
+  background: transparent;
+}
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, rgba(255, 90, 54, 0.8), rgba(255, 255, 255, 0.14));
+}
+input[type="range"]::-moz-range-track {
+  height: 2px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.14);
+}
+input[type="range"]::-moz-range-progress {
+  height: 2px;
+  background: rgba(255, 90, 54, 0.8);
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  margin-top: -7px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow:
+    0 0 0 4px rgba(255, 90, 54, 0.25),
+    0 0 16px rgba(255, 90, 54, 0.7);
+  cursor: grab;
+}
+input[type="range"]::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border: 0;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow:
+    0 0 0 4px rgba(255, 90, 54, 0.25),
+    0 0 16px rgba(255, 90, 54, 0.7);
 }

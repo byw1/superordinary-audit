@@ -11,7 +11,7 @@ import { getView } from "@/lib/view";
 
 const TITLE = "SuperOrdinary, read like an operator";
 const DESCRIPTION =
-  "An outside-in audit of SuperOrdinary's TikTok Shop operating engine: the workflows, the unit economics, the scorecard, and where a GM would push first.";
+  "An outside-in read of SuperOrdinary's TikTok Shop engine: how the business makes money, where value leaks, the numbers underneath, and how I'd run it.";
 
 // Fonts come from npm packages (geist, @fontsource) rather than
 // next/font/google, so a production build never depends on a network fetch.
