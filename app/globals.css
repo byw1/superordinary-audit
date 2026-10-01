@@ -1,28 +1,46 @@
 @import "tailwindcss";
 
+/* SuperOrdinary's own system, read from their investor site: white ground,
+   #121212 ink, one red (#F23726), Zalando Sans SemiExpanded for display and
+   Helvetica Neue / Inter for text, and #121212 "surface-dark" sections. */
 @theme {
-  /* Midnight and one warm accent. The accent marks what moves money or needs
-     attention; everything else is light at different intensities. */
-  --color-paper: #09090b;
-  --color-card: #111114;
-  --color-sunk: #16161a;
-  --color-line: #232329;
-  --color-line-2: #34343c;
-  --color-ink: #f4f1eb;
-  --color-ink-2: #bdb8ae;
-  --color-mute: #8d887e;
-  --color-faint: #6d685f;
-  --color-live: #ff5a36;
-  --color-live-deep: #ff8f73;
-  --color-live-wash: rgba(255, 90, 54, 0.09);
+  --color-paper: #ffffff;
+  --color-card: #ffffff;
+  --color-sunk: #f5f5f5;
+  --color-line: #e5e5e5;
+  --color-line-2: #d4d4d4;
+  --color-ink: #121212;
+  --color-ink-2: #3f3f3f;
+  --color-mute: #737373;
+  --color-faint: #a3a3a3;
+  --color-live: #f23726;
+  --color-live-deep: #c92a1b;
+  --color-live-wash: #fdecea;
 
-  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Helvetica Neue", "Inter", Arial, sans-serif;
+  --font-display: "Zalando Sans SemiExpanded", "Helvetica Neue", Arial, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, "SF Mono", Menlo, monospace;
-  --font-serif: "Instrument Serif", ui-serif, Georgia, serif;
 }
 
-:root {
-  color-scheme: dark;
+/* Dark sections flip the same tokens, so every component works in both. */
+.surface-dark {
+  --color-paper: #121212;
+  --color-card: #1a1a1a;
+  --color-sunk: #1f1f1f;
+  --color-line: #2a2a2a;
+  --color-line-2: #3a3a3a;
+  --color-ink: #ffffff;
+  --color-ink-2: #c7c7c7;
+  --color-mute: #a3a3a3;
+  --color-faint: #7a7a7a;
+  --color-live-deep: #ff7a6a;
+  --color-live-wash: rgba(242, 55, 38, 0.12);
+  background: #121212;
+  color: #fff;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 html,
@@ -39,31 +57,38 @@ body {
 
 /* ── Type roles ─────────────────────────────────────────────────────────── */
 
+.u-display {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  line-height: 1;
+}
+
 .u-label {
-  font-family: var(--font-mono);
-  font-size: 10.5px;
-  line-height: 1.2;
-  letter-spacing: 0.12em;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--color-mute);
 }
 
-.u-display {
-  font-family: var(--font-serif);
-  font-weight: 400;
-  letter-spacing: -0.01em;
-  line-height: 1.02;
-}
-
-.u-prose {
-  line-height: 1.62;
-  color: var(--color-ink-2);
-  text-wrap: pretty;
-}
-
 .u-num {
-  font-family: var(--font-mono);
+  font-family: var(--font-display);
   font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+
+/* ── Surfaces ───────────────────────────────────────────────────────────── */
+
+.u-card {
+  background: var(--color-card);
+  border: 1px solid var(--color-line);
+  border-radius: 20px;
+}
+
+.surface-dark .u-card {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.015));
+  border-color: rgba(255, 255, 255, 0.08);
 }
 
 /* ── Motion ─────────────────────────────────────────────────────────────── */
@@ -71,7 +96,7 @@ body {
 @keyframes riseIn {
   from {
     opacity: 0;
-    transform: translateY(6px);
+    transform: translateY(8px);
   }
   to {
     opacity: 1;
@@ -80,7 +105,7 @@ body {
 }
 
 .u-rise {
-  animation: riseIn 320ms cubic-bezier(0.22, 0.68, 0.24, 1) both;
+  animation: riseIn 420ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
 }
 
 @keyframes livePulse {
@@ -97,53 +122,19 @@ body {
   animation: livePulse 1.6s ease-in-out infinite;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.001ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.001ms !important;
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
   }
 }
 
-/* ── Chrome ─────────────────────────────────────────────────────────────── */
-
-::selection {
-  background: rgba(255, 90, 54, 0.35);
-  color: #fff;
+.u-marquee {
+  animation: marquee 60s linear infinite;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
-/* Soft light from above, so the page has depth without decoration. */
-body {
-  background:
-    radial-gradient(1200px 600px at 50% -200px, rgba(255, 90, 54, 0.07), transparent 70%),
-    var(--color-paper);
-}
-
-.u-glass {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.012));
-  border: 1px solid rgba(255, 255, 255, 0.07);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.05),
-    0 30px 60px -30px rgba(0, 0, 0, 0.6);
-}
-
-.u-grad-text {
-  background: linear-gradient(100deg, #fff 0%, #ffd2c4 45%, #ff5a36 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-/* Scroll reveal: elements start low and faded, and settle in when seen. */
 .u-reveal {
   opacity: 0;
-  transform: translateY(24px);
+  transform: translateY(28px);
   transition:
     opacity 900ms cubic-bezier(0.2, 0.7, 0.2, 1),
     transform 900ms cubic-bezier(0.2, 0.7, 0.2, 1);
@@ -152,11 +143,26 @@ body {
   opacity: 1;
   transform: none;
 }
+
 @media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
   .u-reveal {
     opacity: 1;
     transform: none;
   }
+}
+
+/* ── Chrome ─────────────────────────────────────────────────────────────── */
+
+::selection {
+  background: #f23726;
+  color: #fff;
 }
 
 :focus-visible {
@@ -165,7 +171,42 @@ body {
 }
 
 input[type="range"] {
-  accent-color: var(--color-live);
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 18px;
+  background: transparent;
+}
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 2px;
+  background: var(--color-line-2);
+}
+input[type="range"]::-moz-range-track {
+  height: 2px;
+  background: var(--color-line-2);
+}
+input[type="range"]::-moz-range-progress {
+  height: 2px;
+  background: #f23726;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  margin-top: -7px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #f23726;
+  border: 3px solid var(--color-paper);
+  box-shadow: 0 0 0 1px #f23726;
+  cursor: grab;
+}
+input[type="range"]::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #f23726;
+  border: 3px solid var(--color-paper);
+  box-shadow: 0 0 0 1px #f23726;
 }
 
 @media print {
@@ -178,65 +219,4 @@ input[type="range"] {
     opacity: 1 !important;
     transform: none !important;
   }
-}
-
-@media print {
-  footer,
-  details summary span {
-    display: none !important;
-  }
-  main {
-    padding-top: 0 !important;
-  }
-  .u-rise {
-    animation: none !important;
-  }
-  li,
-  .rounded-md {
-    break-inside: avoid;
-  }
-}
-
-/* Range inputs: a thin track and a glowing thumb. */
-input[type="range"] {
-  -webkit-appearance: none;
-  appearance: none;
-  height: 18px;
-  background: transparent;
-}
-input[type="range"]::-webkit-slider-runnable-track {
-  height: 2px;
-  border-radius: 2px;
-  background: linear-gradient(90deg, rgba(255, 90, 54, 0.8), rgba(255, 255, 255, 0.14));
-}
-input[type="range"]::-moz-range-track {
-  height: 2px;
-  border-radius: 2px;
-  background: rgba(255, 255, 255, 0.14);
-}
-input[type="range"]::-moz-range-progress {
-  height: 2px;
-  background: rgba(255, 90, 54, 0.8);
-}
-input[type="range"]::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  margin-top: -7px;
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  background: #fff;
-  box-shadow:
-    0 0 0 4px rgba(255, 90, 54, 0.25),
-    0 0 16px rgba(255, 90, 54, 0.7);
-  cursor: grab;
-}
-input[type="range"]::-moz-range-thumb {
-  width: 16px;
-  height: 16px;
-  border: 0;
-  border-radius: 50%;
-  background: #fff;
-  box-shadow:
-    0 0 0 4px rgba(255, 90, 54, 0.25),
-    0 0 16px rgba(255, 90, 54, 0.7);
 }

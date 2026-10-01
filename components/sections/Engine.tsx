@@ -19,7 +19,7 @@ export default function Engine() {
                 key={w.id}
                 onClick={() => setId(w.id)}
                 className={`group flex shrink-0 items-center gap-3 rounded-xl px-4 py-3 text-left transition-all ${
-                  on ? "bg-white/[0.07] text-ink shadow-[inset_0_0_0_1px_rgba(255,255,255,0.08)]" : "text-mute hover:bg-white/[0.03] hover:text-ink-2"
+                  on ? "bg-sunk text-ink shadow-[inset_0_0_0_1px_var(--color-line)]" : "text-mute hover:bg-sunk hover:text-ink-2"
                 }`}
               >
                 <span className={`font-mono text-[11px] ${on ? "text-live" : "text-faint"}`}>{w.n}</span>
@@ -30,20 +30,20 @@ export default function Engine() {
           })}
         </nav>
 
-        <div key={wf.id} className="u-glass u-rise rounded-3xl p-6 sm:p-9">
+        <div key={wf.id} className="u-card u-rise rounded-3xl p-6 sm:p-9">
           <div className="text-[12px] text-mute">{wf.jd}</div>
           <h3 className="u-display mt-2 text-[36px] leading-[1.05] text-ink sm:text-[44px]">{wf.name}</h3>
           <p className="mt-4 max-w-[70ch] text-[15.5px] leading-[1.6] text-ink-2">{wf.oneLiner}</p>
 
           <ol className="relative mt-10 grid gap-4 md:grid-flow-col md:auto-cols-fr md:gap-3">
-            <span aria-hidden className="absolute left-0 right-0 top-[11px] hidden h-px bg-gradient-to-r from-white/5 via-white/20 to-white/5 md:block" />
+            <span aria-hidden className="absolute left-0 right-0 top-[11px] hidden h-px bg-line-2 md:block" />
             {wf.stages.map((s, i) => {
               const leak = wf.leaks.find((l) => l.at === i);
               return (
                 <li key={s.name} className="relative" title={s.detail}>
                   <span
                     className={`relative z-10 flex h-6 w-6 items-center justify-center rounded-full font-mono text-[10.5px] ${
-                      leak ? "bg-live text-white shadow-[0_0_18px_rgba(255,90,54,0.8)]" : "border border-white/20 bg-paper text-ink-2"
+                      leak ? "bg-live text-white shadow-[0_0_18px_rgba(255,90,54,0.8)]" : "border border-line-2 bg-paper text-ink-2"
                     }`}
                   >
                     {i + 1}
@@ -70,7 +70,7 @@ export default function Engine() {
                 ))}
               </ul>
             </div>
-            <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
+            <div className="rounded-2xl border border-line bg-sunk p-5">
               <div className="mb-3 text-[12px] font-medium text-ink">The first change I’d make</div>
               <p className="text-[14.5px] leading-[1.6] text-ink">{wf.myMove}</p>
             </div>
@@ -79,7 +79,7 @@ export default function Engine() {
           <div className="mt-6 flex flex-wrap items-center gap-2">
             <span className="mr-1 text-[12px] text-faint">Watch:</span>
             {wf.kpis.map((k) => (
-              <span key={k.name} title={k.why} className="rounded-full border border-white/10 px-3 py-1 text-[12px] text-ink-2">
+              <span key={k.name} title={k.why} className="rounded-full border border-line px-3 py-1 text-[12px] text-ink-2">
                 {k.name}
               </span>
             ))}

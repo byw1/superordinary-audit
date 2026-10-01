@@ -13,10 +13,10 @@ const COLS = [
 export default function Business() {
   return (
     <Chapter
-      id="business"
+      id="company"
       n="01"
-      kicker="The business"
-      title={<>A commerce engine with <em className="italic text-live-deep">creators</em> as the channel.</>}
+      kicker="The company"
+      title={<>A commerce engine with <span className="text-live">creators</span> as the channel.</>}
       sub="Product used to find customers through shelves and search. SuperOrdinary’s bet, since its China years, is that it now finds them through creators, video and LIVE. The company runs the engine in the middle and gets paid five ways."
     >
       <Reveal>
@@ -24,9 +24,9 @@ export default function Business() {
           {COLS.map((c) => (
             <div
               key={c.head}
-              className={`rounded-2xl p-5 ${c.live ? "border border-live/40 bg-gradient-to-b from-live/[0.14] to-live/[0.02] shadow-[0_30px_80px_-30px_rgba(255,90,54,0.5)]" : "u-glass"}`}
+              className={`rounded-2xl p-5 ${c.live ? "surface-dark shadow-[0_30px_60px_-30px_rgba(0,0,0,0.45)]" : "u-card"}`}
             >
-              <div className={`mb-4 text-[13px] font-medium ${c.live ? "text-live-deep" : "text-ink"}`}>{c.head}</div>
+              <div className={`mb-4 text-[13px] font-semibold ${c.live ? "text-live" : "text-ink"}`}>{c.head}</div>
               <ul className="space-y-2">
                 {c.items.map((i) => (
                   <li key={i} className="text-[13.5px] leading-snug text-ink-2">{i}</li>
@@ -40,7 +40,7 @@ export default function Business() {
       <Reveal delay={100}>
         <div className="mt-3 flex flex-wrap gap-2">
           {REVENUE_STREAMS.map((r) => (
-            <span key={r.name} title={r.read} className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1.5 text-[12.5px] text-ink-2">
+            <span key={r.name} title={r.read} className="rounded-full border border-line bg-sunk px-3 py-1.5 text-[12.5px] text-ink-2">
               {r.name}
             </span>
           ))}
@@ -50,7 +50,7 @@ export default function Business() {
 
       <div className="mt-24 grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
         <Reveal>
-          <h3 className="u-display text-[34px] leading-[1.05] text-ink">What changed under the business in fifteen months.</h3>
+          <h3 className="u-display text-[30px] text-ink sm:text-[36px]">What changed under the business in fifteen months.</h3>
           <p className="mt-4 text-[15px] leading-[1.6] text-ink-2">
             The ban risk is mostly gone. What’s left is the landlord’s risk: fees, ad products, and
             where shoppers now find products.
@@ -59,7 +59,7 @@ export default function Business() {
         <div className="grid gap-3 sm:grid-cols-2">
           {PLATFORM_SHIFTS.map((s, i) => (
             <Reveal key={s.what} delay={i * 80}>
-              <div className="u-glass h-full rounded-2xl p-5">
+              <div className="u-card h-full rounded-2xl p-5">
                 <p className="text-[14.5px] font-medium leading-snug text-ink">{s.what}</p>
                 <p className="mt-3 text-[13.5px] leading-[1.55] text-ink-2">{s.soWhat}</p>
                 <a href={s.url} className="mt-3 block text-[11px] text-faint hover:text-ink">{s.source} ↗</a>
@@ -71,8 +71,8 @@ export default function Business() {
 
       <div className="mt-24 grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
         <Reveal>
-          <h3 className="u-display text-[34px] leading-[1.05] text-ink">
-            The part competitors don’t have: <em className="italic text-live-deep">Fanfix</em>.
+          <h3 className="u-display text-[30px] text-ink sm:text-[36px]">
+            The part competitors don’t have: <span className="text-live">Fanfix</span>.
           </h3>
           <p className="mt-4 text-[15px] leading-[1.6] text-ink-2">
             {FANFIX.facts[0].value} paid out to creators, {FANFIX.facts[2].value} active creators, a{" "}
@@ -84,7 +84,7 @@ export default function Business() {
         <div className="grid gap-3 sm:grid-cols-2">
           {BRIDGES.map((b, i) => (
             <Reveal key={b.name} delay={i * 80}>
-              <div className="u-glass h-full rounded-2xl p-5">
+              <div className="u-card h-full rounded-2xl p-5">
                 <div className="text-[15px] font-medium text-ink">{b.name}</div>
                 <p className="mt-2 text-[13.5px] leading-[1.55] text-ink-2">{b.mechanism}</p>
                 <p className="mt-3 text-[12.5px] leading-[1.5] text-mute">
@@ -98,11 +98,11 @@ export default function Business() {
 
       <div className="mt-24 grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
         <Reveal>
-          <h3 className="u-display text-[34px] leading-[1.05] text-ink">The field.</h3>
+          <h3 className="u-display text-[30px] text-ink sm:text-[36px]">The field.</h3>
           <p className="mt-4 text-[15px] leading-[1.6] text-ink-2">{EDGE_READ}</p>
         </Reveal>
         <Reveal delay={80}>
-          <div className="u-glass divide-y divide-white/[0.06] rounded-2xl">
+          <div className="u-card divide-y divide-line rounded-2xl">
             {COMPETITORS.map((c) => (
               <div key={c.name} className="grid gap-1 px-5 py-4 sm:grid-cols-[150px_1fr] sm:gap-5">
                 <a href={c.url} className="text-[14px] font-medium text-ink hover:text-live-deep">{c.name}</a>

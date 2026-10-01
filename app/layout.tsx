@@ -1,15 +1,17 @@
 import type { Metadata } from "next";
-import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
-import "@fontsource/instrument-serif/400.css";
-import "@fontsource/instrument-serif/400-italic.css";
+import "@fontsource/zalando-sans-semiexpanded/500.css";
+import "@fontsource/zalando-sans-semiexpanded/600.css";
+import "@fontsource/zalando-sans-semiexpanded/700.css";
+import "@fontsource/inter/400.css";
+import "@fontsource/inter/500.css";
 import { Suspense } from "react";
 import "./globals.css";
 import Shell from "@/components/Shell";
 import { ModeProvider } from "@/lib/mode";
 import { getView } from "@/lib/view";
 
-const TITLE = "SuperOrdinary, read like an operator";
+const TITLE = "SuperOrdinary · An operator’s read";
 const DESCRIPTION =
   "An outside-in read of SuperOrdinary's TikTok Shop engine: how the business makes money, where value leaks, the numbers underneath, and how I'd run it.";
 
@@ -39,7 +41,7 @@ export const metadata: Metadata = {
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const mode = await getView();
   return (
-    <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable}`}>
+    <html lang="en" className={GeistMono.variable}>
       <body className="min-h-screen antialiased">
         <Suspense fallback={null}>
           <ModeProvider mode={mode}>

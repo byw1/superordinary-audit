@@ -47,7 +47,7 @@ export default function CreatorFunnel() {
 
   return (
     <div className="grid gap-4 lg:grid-cols-[0.9fr_1.1fr]">
-      <div className="u-glass rounded-3xl p-6 sm:p-8">
+      <div className="u-card rounded-3xl p-6 sm:p-8">
         <div className="mb-6 flex items-center justify-between">
           <span className="text-[13px] text-ink">One brand, one month of sampling</span>
           <button onClick={() => setV(DEFAULTS)} className="text-[12px] text-mute underline underline-offset-4 hover:text-ink">
@@ -67,7 +67,7 @@ export default function CreatorFunnel() {
         </div>
       </div>
 
-      <div className="u-glass flex flex-col overflow-hidden rounded-3xl">
+      <div className="u-card flex flex-col overflow-hidden rounded-3xl">
         <div className="relative h-[380px]">
           <div className="absolute inset-0">
             <FunnelScene values={[v.samples, r.posts, r.orders]} />
@@ -84,7 +84,7 @@ export default function CreatorFunnel() {
             <Basis kind="illustrative" />
           </div>
         </div>
-        <div className="mt-auto grid grid-cols-2 gap-px border-t border-white/[0.06] bg-white/[0.04]">
+        <div className="mt-auto grid grid-cols-2 gap-px border-t border-line bg-sunk">
           {[
             ["GMV from this wave", $(r.gmv), false],
             ["GMV per sample", $(r.perSample), false],

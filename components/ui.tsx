@@ -56,9 +56,9 @@ export function Card({
   tone?: "plain" | "live" | "sunk";
 }) {
   const tones = {
-    plain: "u-glass",
+    plain: "u-card",
     live: "border border-live/30 bg-live/[0.06]",
-    sunk: "border border-white/[0.06] bg-white/[0.02]",
+    sunk: "border border-line bg-sunk",
   };
   return <div className={`rounded-2xl p-5 sm:p-6 ${tones[tone]} ${className}`}>{children}</div>;
 }

@@ -1,71 +1,63 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import { BRANDS } from "@/data/brands.mjs";
 import { HEADLINE_FACTS } from "@/data/company";
 
 // three.js stays off the critical path: text paints first, the scene fades in.
-const HeroScene = dynamic(() => import("@/components/three/HeroScene"), {
-  ssr: false,
-  loading: () => null,
-});
+const LogoScene = dynamic(() => import("@/components/three/LogoScene"), { ssr: false, loading: () => null });
+
+const ORBIT = BRANDS.filter((b) => b.group === "current")
+  .slice(0, 14)
+  .map((b) => `/logos/${b.domain}.png`);
 
 export default function Hero() {
   return (
-    <section className="relative isolate min-h-[100svh] overflow-hidden">
-      <div className="absolute inset-0 -z-10 opacity-55 lg:opacity-100">
-        <div className="absolute inset-0 animate-[riseIn_1.6s_ease-out_both]">
-          <HeroScene />
-        </div>
-      </div>
-      <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-r from-paper/90 via-paper/30 to-transparent" />
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-40 bg-gradient-to-t from-paper to-transparent" />
-
-      <div className="mx-auto flex min-h-[100svh] w-full max-w-[1200px] flex-col justify-center px-4 pb-10 pt-28 sm:px-8">
-        <div className="max-w-[640px]">
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 text-[12px] text-ink-2 backdrop-blur">
+    <section className="relative isolate overflow-hidden bg-paper">
+      <div className="mx-auto grid min-h-[100svh] w-full max-w-[1280px] items-center gap-6 px-5 pb-10 pt-24 sm:px-8 lg:grid-cols-[1fr_1.05fr]">
+        <div className="relative z-10">
+          <div className="u-label mb-6 flex items-center gap-2 text-ink">
             <span className="h-1.5 w-1.5 rounded-full bg-live" />
-            Prepared for the GM, TikTok Shop Operations conversation
+            GM, TikTok Shop Operations · An operator’s read
           </div>
-          <h1 className="u-display text-[52px] leading-[0.98] text-ink sm:text-[76px] lg:text-[88px]">
-            SuperOrdinary,
+          <h1 className="u-display text-[40px] text-ink sm:text-[60px] lg:text-[66px] xl:text-[74px]">
+            <span className="whitespace-nowrap">SuperOrdinary,</span>
             <br />
-            <em className="u-grad-text italic">read like an operator.</em>
+            <span className="text-live">read like an</span>
+            <br />
+            operator.
           </h1>
-          <p className="mt-7 max-w-[54ch] text-[17px] leading-[1.6] text-ink-2">
-            An outside-in look at the TikTok Shop engine: how the business makes money, where value
-            leaks, the numbers underneath, and how I’d run it from day one.
+          <p className="mt-8 max-w-[52ch] text-[17px] leading-[1.6] text-ink-2">
+            An outside-in audit of the company, its brand portfolio and the TikTok Shop engine
+            underneath: how it makes money, where value leaks, and how I’d run it from day one.
           </p>
           <div className="mt-9 flex flex-wrap items-center gap-3">
-            <a
-              href="#engine"
-              className="rounded-full bg-live px-5 py-2.5 text-[14px] font-medium text-white shadow-[0_10px_40px_-10px_rgba(255,90,54,0.8)] transition-transform hover:scale-[1.03]"
-            >
-              See the engine
+            <a href="#company" className="rounded-full bg-ink px-6 py-3 text-[14px] font-medium text-paper transition-transform hover:scale-[1.03]">
+              Start the read
             </a>
-            <a
-              href="#numbers"
-              className="rounded-full border border-white/15 px-5 py-2.5 text-[14px] text-ink transition-colors hover:border-white/40"
-            >
+            <a href="#numbers" className="rounded-full border border-line-2 px-6 py-3 text-[14px] font-medium text-ink transition-colors hover:border-ink">
               Run the numbers
             </a>
           </div>
+          <p className="mt-8 text-[12px] text-faint">Prepared by William Lee · independent, from public sources</p>
         </div>
 
-        <div className="mt-16 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-white/[0.07] bg-white/[0.06] backdrop-blur-md lg:mt-24 lg:grid-cols-4">
-          {HEADLINE_FACTS.map((f) => (
-            <div key={f.label} className="bg-paper/70 p-5 sm:p-6">
-              <div className="u-display text-[40px] leading-none text-ink sm:text-[48px]">{f.value}</div>
-              <div className="mt-2 text-[13px] leading-snug text-ink-2">{f.label}</div>
-              <div className="mt-2 text-[11px] text-faint">{f.source}</div>
+        <div className="relative h-[440px] sm:h-[560px] lg:h-[680px]">
+          <div className="absolute inset-0 animate-[riseIn_1.4s_ease-out_both]">
+            <LogoScene logos={ORBIT} />
+          </div>
+        </div>
+      </div>
+
+      <div className="mx-auto w-full max-w-[1280px] px-5 pb-16 sm:px-8">
+        <div className="grid grid-cols-2 border-t border-ink lg:grid-cols-4">
+          {HEADLINE_FACTS.map((f, i) => (
+            <div key={f.label} className={`py-6 pr-5 ${i % 2 ? "pl-5" : ""} lg:pl-5 lg:first:pl-0 ${i ? "lg:border-l lg:border-line" : ""}`}>
+              <div className="u-num text-[40px] font-semibold leading-none text-ink sm:text-[52px]">{f.value}</div>
+              <div className="mt-3 text-[13.5px] leading-snug text-ink-2">{f.label}</div>
+              <div className="mt-1.5 text-[11px] text-faint">{f.source}</div>
             </div>
           ))}
-        </div>
-
-        <div className="mt-6 hidden items-center gap-5 text-[11.5px] text-faint lg:flex">
-          <span className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-white" /> Content</span>
-          <span className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-live" /> Money</span>
-          <span className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-[#ffc2ae]" /> Creators flowing in</span>
-          <span>Three orbits: video, LIVE, the Shop tab</span>
         </div>
       </div>
     </section>

@@ -2,13 +2,15 @@
 
 import { usePathname } from "next/navigation";
 import { useEffect, useState, type ReactNode } from "react";
+import SoMark from "@/components/SoMark";
 import { TLink, usePrepAllowed, useShare, useToggleHref } from "@/lib/mode";
 
 const NAV = [
-  { href: "/#business", label: "The business" },
-  { href: "/#engine", label: "The engine" },
-  { href: "/#numbers", label: "The numbers" },
-  { href: "/#plan", label: "The plan" },
+  { href: "/#company", label: "Company" },
+  { href: "/#portfolio", label: "Portfolio" },
+  { href: "/#engine", label: "Engine" },
+  { href: "/#numbers", label: "Numbers" },
+  { href: "/#plan", label: "Plan" },
   { href: "/#why", label: "Why me" },
 ];
 
@@ -28,20 +30,22 @@ export default function Shell({ children }: { children: ReactNode }) {
   return (
     <>
       <header
-        className={`fixed inset-x-0 top-0 z-40 transition-colors duration-300 ${
-          scrolled ? "border-b border-white/[0.06] bg-paper/75 backdrop-blur-xl" : "border-b border-transparent"
+        className={`fixed inset-x-0 top-0 z-40 transition-all duration-300 ${
+          scrolled ? "border-b border-line bg-white/85 backdrop-blur-xl" : "border-b border-transparent"
         }`}
       >
-        <div className="mx-auto flex h-14 w-full max-w-[1200px] items-center gap-6 px-4 sm:px-8">
-          <TLink href="/" className="flex shrink-0 items-center gap-2.5">
-            <span className="u-live-dot block h-2 w-2 rounded-full bg-live shadow-[0_0_12px_rgba(255,90,54,0.9)]" />
-            <span className="text-[13px] font-medium tracking-[-0.01em] text-ink">SuperOrdinary</span>
-            <span className="hidden text-[13px] text-mute sm:inline">· an operator’s read</span>
+        <div className="mx-auto flex h-16 w-full max-w-[1280px] items-center gap-6 px-5 sm:px-8">
+          <TLink href="/" className="flex shrink-0 items-center gap-2.5 text-ink">
+            <SoMark className="h-7 w-7" />
+            <span className="font-[family-name:var(--font-display)] text-[15px] font-semibold tracking-[-0.02em]">
+              SUPERORDINARY
+            </span>
+            <span className="hidden text-[12px] text-mute md:inline">/ an operator’s read</span>
           </TLink>
 
           <nav className="ml-auto hidden items-center gap-6 lg:flex">
             {NAV.map((n) => (
-              <TLink key={n.href} href={n.href} className="text-[13px] text-ink-2 transition-colors hover:text-ink">
+              <TLink key={n.href} href={n.href} className="text-[13.5px] text-ink-2 transition-colors hover:text-ink">
                 {n.label}
               </TLink>
             ))}
@@ -51,8 +55,8 @@ export default function Shell({ children }: { children: ReactNode }) {
             {prepAllowed && !share && (
               <TLink
                 href="/prep"
-                className={`rounded-full border px-3 py-1 text-[12px] transition-colors ${
-                  pathname === "/prep" ? "border-live text-live-deep" : "border-line-2 text-ink-2 hover:text-ink"
+                className={`rounded-full border px-3 py-1 text-[12px] ${
+                  pathname === "/prep" ? "border-live text-live" : "border-line-2 text-ink-2 hover:text-ink"
                 }`}
               >
                 Prep
@@ -61,7 +65,7 @@ export default function Shell({ children }: { children: ReactNode }) {
             {prepAllowed && <ModeSwitch />}
             <a
               href="mailto:william@bywilliaml.com"
-              className="rounded-full bg-ink px-3.5 py-1.5 text-[12.5px] font-medium text-paper transition-transform hover:scale-[1.03]"
+              className="rounded-full bg-live px-4 py-2 text-[13px] font-medium text-white transition-transform hover:scale-[1.03]"
             >
               Get in touch
             </a>
@@ -71,20 +75,35 @@ export default function Shell({ children }: { children: ReactNode }) {
 
       <main>{children}</main>
 
-      <footer className="border-t border-line">
-        <div className="mx-auto flex w-full max-w-[1200px] flex-wrap items-center justify-between gap-3 px-4 py-8 text-[12.5px] text-faint sm:px-8">
-          <span>Prepared by William Lee · outside-in, from public sources · September 2026</span>
-          <span className="flex gap-5">
-            <button type="button" onClick={() => window.print()} className="no-print hover:text-ink">
-              Save as PDF
-            </button>
-            <a href="mailto:william@bywilliaml.com" className="hover:text-ink">
-              william@bywilliaml.com
-            </a>
-            <a href="https://linkedin.com/in/bywilliaml" className="hover:text-ink">
-              LinkedIn
-            </a>
-          </span>
+      <footer className="surface-dark">
+        <div className="mx-auto w-full max-w-[1280px] px-5 py-14 sm:px-8">
+          <div className="flex flex-wrap items-end justify-between gap-8">
+            <div className="flex items-center gap-3 text-white">
+              <SoMark className="h-10 w-10" />
+              <div>
+                <div className="font-[family-name:var(--font-display)] text-[18px] font-semibold tracking-[-0.02em]">
+                  An operator’s read
+                </div>
+                <div className="text-[13px] text-mute">Prepared by William Lee · September 2026</div>
+              </div>
+            </div>
+            <div className="flex flex-wrap gap-6 text-[13px] text-ink-2">
+              <button type="button" onClick={() => window.print()} className="no-print hover:text-white">
+                Save as PDF
+              </button>
+              <a href="mailto:william@bywilliaml.com" className="hover:text-white">
+                william@bywilliaml.com
+              </a>
+              <a href="https://linkedin.com/in/bywilliaml" className="hover:text-white">
+                LinkedIn
+              </a>
+            </div>
+          </div>
+          <p className="mt-10 max-w-[90ch] border-t border-line pt-6 text-[12px] leading-[1.6] text-faint">
+            Independent work by a candidate, built from public sources. Not affiliated with, or endorsed
+            by, SuperOrdinary. Brand names and logos belong to their owners and are shown to describe
+            the company’s public partnerships.
+          </p>
         </div>
       </footer>
     </>

@@ -12,11 +12,11 @@ const PROOF = [
 export default function Why() {
   return (
     <>
-      <div className="grid gap-px overflow-hidden rounded-3xl border border-white/[0.07] bg-white/[0.06] sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-px overflow-hidden rounded-3xl border border-line bg-sunk sm:grid-cols-2 lg:grid-cols-3">
         {PROOF.map((p, i) => (
           <Reveal key={p.big} delay={(i % 3) * 90} className="h-full">
             <div className="h-full bg-paper p-7 transition-colors hover:bg-card">
-              <div className="u-display u-grad-text text-[52px] leading-none">{p.big}</div>
+              <div className="u-display text-[52px] leading-none">{p.big}</div>
               <p className="mt-4 text-[14px] leading-[1.6] text-ink-2">{p.line}</p>
             </div>
           </Reveal>
@@ -24,7 +24,7 @@ export default function Why() {
       </div>
 
       <Reveal>
-        <div className="mt-6 grid gap-6 rounded-3xl border border-white/[0.07] bg-gradient-to-br from-white/[0.04] to-transparent p-8 sm:p-10 lg:grid-cols-[1.3fr_1fr] lg:items-center">
+        <div className="mt-6 grid gap-6 rounded-3xl border border-line bg-sunk p-8 sm:p-10 lg:grid-cols-[1.3fr_1fr] lg:items-center">
           <p className="u-display text-[28px] leading-[1.2] text-ink sm:text-[34px]">
             Seven years operating across e-commerce, creator talent and marketing agencies. I’ve run
             the creator side and the operating side of this market at the same time, and I’d like to

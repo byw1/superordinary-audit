@@ -18,7 +18,7 @@ export default function Numbers() {
   return (
     <Reveal>
       <div className="no-print mb-6 flex flex-wrap items-center gap-3">
-        <div className="inline-flex rounded-full border border-white/10 bg-white/[0.03] p-1">
+        <div className="inline-flex rounded-full border border-line bg-sunk p-1">
           {TABS.map((x) => (
             <button
               key={x.id}
