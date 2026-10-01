@@ -160,3 +160,23 @@ export const COMPETITORS: { name: string; profile: string; angle: string; source
 
 export const EDGE_READ =
   "What the others don’t combine in one company: a China-honed LIVE playbook (57,000+ hours of livestreams), a buy/sell balance sheet, an owned creator platform, and a microdrama studio. The risk is the flip side of breadth: each line needs its own operating discipline, and the TikTok Shop engine is the one the rest depend on.";
+
+/** Public revenue figures only, each with its source. 2026 is the company's outlook. */
+export const REVENUE: { year: string; value: number; label: string; note: string; source: string; url?: string }[] = [
+  { year: "2020", value: 90, label: "$90M+", note: "Revenue", source: "BeautyMatter, May 2021" },
+  { year: "2021", value: 180, label: "~$180M", note: "“Nears $180M”", source: "Forbes, Nov 2021" },
+  { year: "2025", value: 244, label: "$244M", note: "Revenue", source: "PR Newswire, Apr 2026", url: "https://www.prnewswire.com/news-releases/superordinary-to-redefine-its-creator-commerce-ecosystem-by-inviting-its-creator-community-to-become-shareholders-302759173.html" },
+  { year: "2026E", value: 300, label: "$300M", note: "Outlook, 41% gross margin", source: "PR Newswire, Apr 2026", url: "https://www.prnewswire.com/news-releases/superordinary-to-redefine-its-creator-commerce-ecosystem-by-inviting-its-creator-community-to-become-shareholders-302759173.html" },
+];
+
+/** Leadership as listed on the company's investor site (2026). */
+export const LEADERSHIP: { name: string; title: string; note?: string }[] = [
+  { name: "Julian Reis", title: "Founder & CEO", note: "Former macro trader; co-founded Skin Laundry" },
+  { name: "Derek Trau", title: "Co-founder & COO" },
+  { name: "Harry Golden", title: "Chief Strategy Officer", note: "Oversees SuperOrdinary Studios" },
+  { name: "Gary Sang", title: "VP, TikTok Operations", note: "Credited with TikTok Shop U.S.’s first sale" },
+  { name: "Laura Sposato", title: "SVP, Finance" },
+  { name: "Maggie Rugh", title: "VP, Growth & Partnerships" },
+  { name: "Dylan Harari", title: "CEO, Fanfix · Global Head of Creators" },
+  { name: "Michael van den Berg", title: "Global General Counsel & Head of M&A" },
+];

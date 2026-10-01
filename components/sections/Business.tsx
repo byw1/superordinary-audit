@@ -2,6 +2,7 @@ import Reveal from "@/components/Reveal";
 import { Basis } from "@/components/ui";
 import { BRIDGES, COMPETITORS, EDGE_READ, FANFIX, PLATFORM_SHIFTS, REVENUE_STREAMS } from "@/data/company";
 import Chapter from "./Chapter";
+import CompanyStory from "./CompanyStory";
 
 const COLS = [
   { head: "Supply", items: ["Partner brands on service terms", "Buy/sell brands, where SuperOrdinary owns the inventory", "Owned and creator-led brands"] },
@@ -47,6 +48,10 @@ export default function Business() {
           <span className="self-center pl-1 text-[12px] text-faint">The company’s own revenue lines</span>
         </div>
       </Reveal>
+
+      <div className="mt-20">
+        <CompanyStory />
+      </div>
 
       <div className="mt-24 grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
         <Reveal>
