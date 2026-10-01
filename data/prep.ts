@@ -69,6 +69,7 @@ export const NUMBERS: { n: string; what: string }[] = [
 ];
 
 export const CHECKLIST: string[] = [
+  "Read the Peter Thomas Roth FirmX relaunch (HuffPost, Dec 2025) and know the counters: 865K items sold, 208K on the hero SKU.",
   "Listen to “The Agency That Sold TikTok’s First Item…” (Gary Sang, Emma Rafalski) and Julian Reis’s “$500 Billion TikTok Prediction” episode.",
   "Ask Connor: how are Fanfix creators routed into TikTok Shop today, and who at SuperOrdinary should I know?",
   "Tell Connor which role I’m going for (the referral in Hired went toward the FP&A posting).",
@@ -82,10 +83,17 @@ export const WHO: { name: string; note: string }[] = [
   { name: "Derek Trau · co-founder & COO", note: "The posting says the GM partners with the COO. Likely in the loop." },
   { name: "Gary Sang · VP TikTok Operations", note: "Ex-Orca, credited with TikTok Shop U.S.’s first-ever sale. The GM may sit above or beside him. Don’t guess out loud; ask how the seats relate." },
   { name: "Laura Sposato · SVP Finance", note: "The P&L partner." },
+  { name: "Emma Rafalski · Director of Brand Success", note: "Joined Jan 2024; built brands to $1M+ monthly sales on TikTok Shop; on the podcast with Gary Sang. Likely a key peer or report." },
+  { name: "Vivien Wu · Brand Success / affiliates", note: "On the May 2026 “3 Things Every Successful TikTok Affiliate Has” episode." },
+  { name: "Cesar Villavicencio · Operations / live production", note: "Director of Operations on LinkedIn; executive producer on the podcast." },
+  { name: "Kevin Hill · Technology & Data Strategy", note: "Senior Director/VP. The person to ask about the reporting stack." },
   { name: "Connor McCrory · President, Fanfix", note: "Confirmed in person at their office; not public, so never on the share view. Dylan Harari is CEO publicly. Connor is the warm path in; say “a friend at Fanfix” unless he’s fine being named." },
 ];
 
 export const CAREFUL: string[] = [
+  "There is an open private placement (“Project Skyline”, Series C PPM dated May 2026) with NYSE plans and ticker SUPE reserved. Public, but don’t lead with it; it explains why KPI definitions and forecasting matter so much.",
+  "Headcount figures disagree: ~300 (investor site), 140–150 (FP&A posting, likely U.S. only), 139 on LinkedIn.",
+  "Third-party agency rankings put them #9 of 10 U.S. TikTok Shop agencies (Hubfluence). Self-described as “TikTok Shop’s #1 agency” on the podcast.",
   "The 2026 outlook ($300M) is below the $350M the company expected in 2023.",
   "Headcount went from 500+ to ~300 (the posting says 140–150, likely U.S. only).",
   "Both Fanfix founders have left (Gestetner April 2025, Pompan ~March 2026); one report cited creator complaints about fees and billing.",

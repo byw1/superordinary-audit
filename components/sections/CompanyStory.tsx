@@ -1,5 +1,5 @@
 import Reveal from "@/components/Reveal";
-import { LEADERSHIP, REVENUE, TIMELINE } from "@/data/company";
+import { HEADCOUNT, LEADERSHIP, PROOF, REVENUE, TIMELINE } from "@/data/company";
 
 export default function CompanyStory() {
   const max = Math.max(...REVENUE.map((r) => r.value));
@@ -44,6 +44,50 @@ export default function CompanyStory() {
               </li>
             ))}
           </ol>
+        </div>
+      </Reveal>
+
+      <Reveal className="lg:col-span-2">
+        <div className="grid gap-px overflow-hidden rounded-[20px] border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
+          {PROOF.map((p) => (
+            <div key={p.label} className="bg-paper p-6">
+              <div className="u-num text-[40px] font-semibold leading-none text-live">{p.value}</div>
+              <div className="mt-3 text-[14px] leading-snug text-ink">{p.label}</div>
+              <div className="mt-2 text-[11px] text-faint">{p.source}</div>
+            </div>
+          ))}
+        </div>
+      </Reveal>
+
+      <Reveal className="lg:col-span-2">
+        <div className="u-card p-6 sm:p-8">
+          <div className="flex flex-wrap items-baseline justify-between gap-2">
+            <div className="u-label text-ink">Where the ~300 people sit</div>
+            <div className="text-[11px] text-faint">Investor site, 2026</div>
+          </div>
+          <div className="mt-5 flex h-12 overflow-hidden rounded-xl">
+            {HEADCOUNT.map((h, i) => (
+              <div
+                key={h.unit}
+                className={`flex items-center px-3 text-[12px] font-medium ${i === 0 ? "bg-live text-white" : i === 1 ? "bg-ink text-white" : i === 2 ? "bg-ink-2 text-white" : "bg-line-2 text-ink"}`}
+                style={{ width: `${(h.n / HEADCOUNT.reduce((a, b) => a + b.n, 0)) * 100}%` }}
+                title={`${h.unit}: ${h.n}`}
+              >
+                <span className="truncate">{h.n}</span>
+              </div>
+            ))}
+          </div>
+          <div className="mt-3 flex flex-wrap gap-x-6 gap-y-1 text-[12.5px] text-ink-2">
+            {HEADCOUNT.map((h) => (
+              <span key={h.unit}>
+                <span className="u-num font-semibold text-ink">{h.n}</span> {h.unit}
+              </span>
+            ))}
+          </div>
+          <p className="mt-4 text-[13.5px] leading-[1.6] text-ink-2">
+            Seven in ten people work in TikTok and social commerce. The GM seat runs the largest unit
+            in the company.
+          </p>
         </div>
       </Reveal>
 

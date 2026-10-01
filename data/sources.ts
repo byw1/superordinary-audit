@@ -19,6 +19,21 @@ export const SOURCES: { group: string; items: { title: string; url: string; used
     ],
   },
   {
+    group: "Brands and proof",
+    items: [
+      { title: "Peter Thomas Roth on TikTok Shop", url: "https://shop.tiktok.com/us/pdp/peter-thomas-roth-instant-firmx-easy-wear-eye-tightener/1731252487013372560", used: "Shop counters" },
+      { title: "Laneige US on TikTok Shop", url: "https://shop.tiktok.com/us/store/laneige-us/7495286718562273613", used: "Shop counters" },
+      { title: "Milk Makeup on TikTok Shop", url: "https://www.tiktok.com/shop/store/milk-makeup/7495104340603538385", used: "Shop counters" },
+      { title: "Crocs microdrama and shop ranking (Net Influencer)", url: "https://www.netinfluencer.com/crocs-becomes-first-us-footwear-brand-to-embed-tiktok-shop-into-a-microdrama-series/", used: "Crocs estimate" },
+      { title: "The agency that sold TikTok’s first item (podcast)", url: "https://podcasts.apple.com/ch/podcast/the-agency-that-sold-tiktoks-first-item-tells-you-how/id1813971527?i=1000771059247&l=fr-FR", used: "PTR case study, Gary Sang" },
+      { title: "Inside SuperOrdinary’s Amazon strategy (GCI)", url: "https://www.gcimagazine.com/brands-products/news/news/22327063/inside-superordinarys-amazon-strategy-for-boy-smells-and-111skin", used: "Amazon partners" },
+      { title: "SuperOrdinary’s Amazon-fueled U.S. growth (BeautyMatter, 2021)", url: "https://beautymatter.com/articles/superordinary-amazon-fueled-us-growth-strategy", used: "2020 revenue, Amazon partners" },
+      { title: "The startup helping indie brands expand to China (Glossy, 2020)", url: "https://www.glossy.co/beauty/the-startup-helping-indie-beauty-brands-expand-to-china/", used: "First-year revenue, China partners" },
+      { title: "Series B (Cosmetics Business)", url: "https://cosmeticsbusiness.com/superordinary-secures-58-million-in-series-b-fundraising", used: "Amazon growth figure" },
+      { title: "SuperOrdinary careers board", url: "https://superordinarytalentllc.applytojob.com/", used: "Org, pay, KPIs" },
+    ],
+  },
+  {
     group: "Fanfix",
     items: [
       { title: "Acquisition by SuperOrdinary (Business Wire, Jul 2022)", url: "https://www.businesswire.com/news/home/20220721005108/en/", used: "Acquisition" },

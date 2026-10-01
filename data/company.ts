@@ -80,6 +80,13 @@ export const PLATFORM_SHIFTS: { what: string; soWhat: string; source: string; ur
   },
 ];
 
+export const FANFIX_MORE = [
+  { value: "145K", label: "Average subscribers" },
+  { value: "9.2K", label: "Average daily transactions" },
+  { value: "60%+", label: "Of creator revenue from paid messages" },
+  { value: "10 + 25", label: "Original and licensed microdrama series" },
+];
+
 export const FANFIX = {
   what: "A brand-safe creator subscription platform for Gen Z creators: subscriptions, paid messages, pay-per-view and premium content. Acquired by SuperOrdinary in July 2022; acquired the women-led creator platform Sunroom in August 2025.",
   leader: "Led by Dylan Harari, CEO of Fanfix and SuperOrdinary’s Global Head of Creators.",
@@ -163,20 +170,92 @@ export const EDGE_READ =
 
 /** Public revenue figures only, each with its source. 2026 is the company's outlook. */
 export const REVENUE: { year: string; value: number; label: string; note: string; source: string; url?: string }[] = [
+  { year: "Yr 1", value: 20, label: "~$20M", note: "First year, 12 brands", source: "Glossy, Feb 2020" },
   { year: "2020", value: 90, label: "$90M+", note: "Revenue", source: "BeautyMatter, May 2021" },
   { year: "2021", value: 180, label: "~$180M", note: "“Nears $180M”", source: "Forbes, Nov 2021" },
   { year: "2025", value: 244, label: "$244M", note: "Revenue", source: "PR Newswire, Apr 2026", url: "https://www.prnewswire.com/news-releases/superordinary-to-redefine-its-creator-commerce-ecosystem-by-inviting-its-creator-community-to-become-shareholders-302759173.html" },
   { year: "2026E", value: 300, label: "$300M", note: "Outlook, 41% gross margin", source: "PR Newswire, Apr 2026", url: "https://www.prnewswire.com/news-releases/superordinary-to-redefine-its-creator-commerce-ecosystem-by-inviting-its-creator-community-to-become-shareholders-302759173.html" },
 ];
 
-/** Leadership as listed on the company's investor site (2026). */
+/** Leadership as listed on the company's investor site (2026), with public backgrounds. */
 export const LEADERSHIP: { name: string; title: string; note?: string }[] = [
-  { name: "Julian Reis", title: "Founder & CEO", note: "Former macro trader; co-founded Skin Laundry" },
-  { name: "Derek Trau", title: "Co-founder & COO" },
-  { name: "Harry Golden", title: "Chief Strategy Officer", note: "Oversees SuperOrdinary Studios" },
-  { name: "Gary Sang", title: "VP, TikTok Operations", note: "Credited with TikTok Shop U.S.’s first sale" },
-  { name: "Laura Sposato", title: "SVP, Finance" },
+  { name: "Julian Reis", title: "Founder & CEO", note: "Ex-macro trader; co-founded Skin Laundry; hosts On the Record" },
+  { name: "Derek Trau", title: "Co-founder & COO", note: "Mandarin and Cantonese speaker; ex-WXH International" },
+  { name: "Harry Golden", title: "Chief Strategy Officer", note: "Runs SuperOrdinary Studios; ex-Forest Road" },
+  { name: "Gary Sang, CFA", title: "VP, TikTok Operations", note: "Co-founded Orca; sold TikTok Shop U.S.’s first item" },
+  { name: "Laura Sposato", title: "SVP, Finance", note: "Ex-Nice-Pak, Pernod Ricard, Heineken FP&A" },
+  { name: "Michael van den Berg", title: "Global GC & Head of M&A" },
   { name: "Maggie Rugh", title: "VP, Growth & Partnerships" },
+  { name: "Ari Salzberg", title: "VP, Corporate Development" },
   { name: "Dylan Harari", title: "CEO, Fanfix · Global Head of Creators" },
-  { name: "Michael van den Berg", title: "Global General Counsel & Head of M&A" },
+  { name: "Alex Korman", title: "Head of Product" },
+  { name: "Gerdus Potgieter", title: "VP, Global Controller" },
+  { name: "Sergey Anufrienko", title: "Head of Engineering, Fanfix" },
 ];
+
+/** Headcount by unit, investor site (2026). */
+export const HEADCOUNT = [
+  { unit: "TikTok & social commerce", n: 210 },
+  { unit: "Fanfix", n: 42 },
+  { unit: "Amazon", n: 29 },
+  { unit: "Corporate", n: 24 },
+];
+
+/** Public proof points, each from a named source. */
+export const PROOF: { value: string; label: string; source: string }[] = [
+  { value: "$500M+", label: "Livestream sales in China across 1.1M+ orders, since 2018", source: "PR Newswire, Jan 2024" },
+  { value: "57,000+", label: "Hours of livestreaming on Douyin, Tmall and TikTok", source: "PR Newswire, Jan 2024" },
+  { value: "12 brands", label: "In a single six-hour Mega Live, from a live team that was two people a year earlier", source: "On the Record podcast, Aug 2026" },
+  { value: "88%", label: "Average Amazon growth for its beauty brands", source: "Cosmetics Business, 2023" },
+  { value: "1,694", label: "Unauthorized Amazon sellers removed for partner brands", source: "GCI, ~2022" },
+  { value: "5×", label: "Sales on Peter Thomas Roth’s TikTok Shop relaunch, per the team", source: "On the Record podcast, Jun 2026" },
+];
+
+/** TikTok Shop's own on-page counters, fetched 2026-10-01. Lifetime, not SuperOrdinary-attributed. */
+export const SPOTLIGHTS: { brand: string; domain: string; stats: [string, string][]; line: string; source: string; url?: string }[] = [
+  {
+    brand: "Peter Thomas Roth",
+    domain: "peterthomasroth.com",
+    stats: [["865K", "items sold"], ["208K", "of one hero SKU"]],
+    line: "The Instant FirmX eye tightener, relaunched as an Easy-Wear format and sold as “Only on TikTok Shop”. The team calls it one of the most successful new-arrival campaigns in TikTok Shop history.",
+    source: "TikTok Shop counters; podcast Jun 2026",
+    url: "https://shop.tiktok.com/us/pdp/peter-thomas-roth-instant-firmx-easy-wear-eye-tightener/1731252487013372560",
+  },
+  {
+    brand: "Laneige",
+    domain: "laneige.com",
+    stats: [["1.2M", "shop followers"], ["705K", "items sold"]],
+    line: "Lip-led: Glaze Craze tinted lip serum alone has sold 56.9K units.",
+    source: "TikTok Shop counters",
+    url: "https://shop.tiktok.com/us/store/laneige-us/7495286718562273613",
+  },
+  {
+    brand: "Milk Makeup",
+    domain: "milkmakeup.com",
+    stats: [["1.3M", "shop followers"], ["61.7K", "items sold"]],
+    line: "A launch partner in January 2024 and a SuperOrdinary client since the China years.",
+    source: "TikTok Shop counters",
+    url: "https://www.tiktok.com/shop/store/milk-makeup/7495104340603538385",
+  },
+  {
+    brand: "Crocs",
+    domain: "crocs.com",
+    stats: [["#8", "U.S. shop by revenue, Apr 2026"], ["$6.35M", "that month"]],
+    line: "The first U.S. footwear brand to put TikTok Shop tagging inside a microdrama, built with SuperOrdinary Studios in under four weeks.",
+    source: "Third-party estimate via Net Influencer",
+    url: "https://www.netinfluencer.com/crocs-becomes-first-us-footwear-brand-to-embed-tiktok-shop-into-a-microdrama-series/",
+  },
+];
+
+/** The TikTok Shop org, read from the company's public job postings (Sep 2026). */
+export const ORG: { role: string; pay?: string; owns: string; kpis?: string }[] = [
+  { role: "GM / VP, TikTok Shop Operations", owns: "P&L of the TikTok Shop business: revenue, gross margin, contribution, forecasting. Partners with the COO, Finance, Sales, Marketing and Creative.", kpis: "The whole scorecard" },
+  { role: "Director, Brand Growth & P&L", pay: "$125K", owns: "Leads the P&L for TikTok Shop accounts.", kpis: "Account P&L" },
+  { role: "Brand Lead (3 open)", pay: "$90–115K + bonus", owns: "Enterprise brand point of contact; multi-quarter plans across assortment, promotions, affiliates, livestreams and paid; C-suite-ready decks.", kpis: "Weekly and monthly brand reporting" },
+  { role: "Social Commerce Specialist / Manager", pay: "$90–110K", owns: "Seller Center setup, campaigns, creator outreach and sampling, inventory and shop health; oversees the VA team.", kpis: "GMV, traffic, conversion, CTR, CTOR, content volume" },
+  { role: "Creator Success Manager", pay: "$90–110K", owns: "Paid UGC, Spark Ads and allowlisting, usage rights, the Discord creator community.", kpis: "Contract value, on-time UGC, rebooking, CPA, attributable GMV" },
+  { role: "Livestream Operator", pay: "$70–80K", owns: "Run-of-show, flash sales, cart and chat during live, post-live metrics; named brands include Milk Makeup, LG Beauty, Peter Thomas Roth.", kpis: "Weekly live summaries" },
+  { role: "Live hosts & moderators", pay: "$25–50/hr", owns: "In-house PGC hosts (sessions up to four hours), a Spanish-language host, moderators.", kpis: "Revenue per live hour, conversion, watch time" },
+  { role: "E-Commerce Coordinator", owns: "Customer service, returns, shop violations across TikTok Shop and Shopify.", kpis: "Seller Performance Score" },
+];
+

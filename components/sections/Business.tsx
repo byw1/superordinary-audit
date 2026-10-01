@@ -1,6 +1,6 @@
 import Reveal from "@/components/Reveal";
 import { Basis } from "@/components/ui";
-import { BRIDGES, COMPETITORS, EDGE_READ, FANFIX, PLATFORM_SHIFTS, REVENUE_STREAMS } from "@/data/company";
+import { BRIDGES, COMPETITORS, EDGE_READ, FANFIX, FANFIX_MORE, PLATFORM_SHIFTS, REVENUE_STREAMS } from "@/data/company";
 import Chapter from "./Chapter";
 import CompanyStory from "./CompanyStory";
 
@@ -8,7 +8,7 @@ const COLS = [
   { head: "Supply", items: ["Partner brands on service terms", "Buy/sell brands, where SuperOrdinary owns the inventory", "Owned and creator-led brands"] },
   { head: "The engine", live: true, items: ["Brand pods: Brand Leads, specialists, offshore VAs", "Creator & affiliate ops across 3M+ affiliates", "In-house LIVE studio and Mega Lives", "Paid media (GMV Max) and Studios microdramas"] },
   { head: "TikTok Shop", items: ["Shop tab & search · 51% of U.S. GMV", "Video · 40%", "LIVE · 8%, and the event-day spike"] },
-  { head: "Creators", items: ["Open affiliates", "~2K in the managed roster", "Fanfix creators inside the group"] },
+  { head: "Creators", items: ["3M+ affiliates reached", "2K+ creators in the managed roster", "8,000+ accounts in the SuperClip clipping network", "Fanfix creators inside the group"] },
 ];
 
 export default function Business() {
@@ -84,7 +84,15 @@ export default function Business() {
             {FANFIX.facts[3].value} take rate. A group that owns several of a creator’s income streams
             has an edge in keeping them. The question for the GM is how much of it feeds the Shop.
           </p>
-          <div className="mt-4"><Basis kind="inferred" /></div>
+          <div className="mt-6 grid grid-cols-2 gap-4">
+            {FANFIX_MORE.map((f) => (
+              <div key={f.label}>
+                <div className="u-num text-[28px] font-semibold leading-none text-ink">{f.value}</div>
+                <div className="mt-1 text-[12px] text-mute">{f.label}</div>
+              </div>
+            ))}
+          </div>
+          <div className="mt-6"><Basis kind="inferred" /></div>
         </Reveal>
         <div className="grid gap-3 sm:grid-cols-2">
           {BRIDGES.map((b, i) => (

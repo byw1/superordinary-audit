@@ -7,7 +7,7 @@ import { HEADLINE_FACTS } from "@/data/company";
 // three.js stays off the critical path: text paints first, the scene fades in.
 const LogoScene = dynamic(() => import("@/components/three/LogoScene"), { ssr: false, loading: () => null });
 
-const ORBIT = BRANDS.filter((b) => b.group === "current")
+const ORBIT = BRANDS.filter((b) => b.group === "tiktok" || b.group === "partner")
   .slice(0, 14)
   .map((b) => `/logos/${b.domain}.png`);
 

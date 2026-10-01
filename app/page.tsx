@@ -4,6 +4,7 @@ import Close from "@/components/sections/Close";
 import Engine from "@/components/sections/Engine";
 import Hero from "@/components/sections/Hero";
 import Numbers from "@/components/sections/Numbers";
+import Org from "@/components/sections/Org";
 import Portfolio from "@/components/sections/Portfolio";
 import Plan from "@/components/sections/Plan";
 import Why from "@/components/sections/Why";
@@ -31,8 +32,9 @@ export default function Home() {
         n="03"
         kicker="The engine"
         title={<>Nine workflows run the business. <span className="text-live">Each one leaks somewhere.</span></>}
-        sub="Every line of the GM role breaks down into a workflow with stages, owners, and places where money escapes. Pick one to see it end to end, and the first change I’d make. TikTok Shop mechanics are public; how SuperOrdinary staffs each stage is my read from the outside."
+        sub="First the team, as SuperOrdinary’s own job postings describe it. Then the nine workflows that team runs, each with its stages, owners, and the places money escapes, and the first change I’d make."
       >
+        <Org />
         <Engine />
       </Chapter>
       <Chapter
