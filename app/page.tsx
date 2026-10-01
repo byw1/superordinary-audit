@@ -43,7 +43,7 @@ export default function Home() {
         dark
         kicker="The numbers"
         title={<>GMV is the headline. <span className="text-live">Contribution is the job.</span></>}
-        sub="Three live models, from one month of creator sampling down to one order and up to one brand account. Move the inputs. The numbers are illustrative, not SuperOrdinary’s; the mechanics are real."
+        sub="Four live models: a month of creator sampling, an hour of LIVE costed at SuperOrdinary’s own posted pay, one order, and one brand account. Move the inputs. The numbers are illustrative, not SuperOrdinary’s; the mechanics are real."
       >
         <Numbers />
       </Chapter>

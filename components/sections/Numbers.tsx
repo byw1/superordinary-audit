@@ -3,11 +3,13 @@
 import { useState } from "react";
 import AccountPnL from "@/components/AccountPnL";
 import CreatorFunnel from "@/components/CreatorFunnel";
+import LiveHour from "@/components/LiveHour";
 import Reveal from "@/components/Reveal";
 import UnitEconomics from "@/components/UnitEconomics";
 
 const TABS = [
   { id: "wave", label: "One sample wave", note: "Where the creator engine makes or loses money." },
+  { id: "live", label: "One LIVE hour", note: "What an hour has to sell to pay for itself, at SuperOrdinary’s posted pay." },
   { id: "order", label: "One order", note: "Where each dollar goes, and the ad return needed to break even." },
   { id: "account", label: "One account", note: "Service fees vs. owning the inventory, and where the model flips." },
 ];
@@ -35,6 +37,7 @@ export default function Numbers() {
       </div>
       <div key={tab} className="u-rise">
         {tab === "wave" && <CreatorFunnel />}
+        {tab === "live" && <LiveHour />}
         {tab === "order" && <UnitEconomics />}
         {tab === "account" && <AccountPnL />}
       </div>

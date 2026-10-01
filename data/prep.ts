@@ -5,7 +5,7 @@ export const WALKTHROUGH: { href: string; page: string; say: string; time: strin
   { href: "/", page: "Hero", time: "0:00", say: "Let the scene move for a second. “I wanted to understand the business before talking about the job. The core is the Shop; the three orbits are video, LIVE and the Shop tab; creators flow in from the edge; the red is money.”" },
   { href: "/#business", page: "01 · The business", time: "0:45", say: "“Here’s how I think product, content and money move, and what changed under you in fifteen months: GMV Max, the fee change, the Shop tab passing half of GMV.” Stop and ask what I got wrong." },
   { href: "/#engine", page: "02 · The engine → creator engine", time: "1:45", say: "“Every line of the role is a workflow. This is the one everything depends on. The red stages are where I’d look first: samples that never post, and top creators left on default terms.”" },
-  { href: "/#numbers", page: "03 · The numbers", time: "2:45", say: "Move the post-rate slider live and let the funnel react. “Ten points of post rate is worth more than any budget increase.” Then One order: breakeven ROAS is different for every brand." },
+  { href: "/#numbers", page: "03 · The numbers", time: "2:45", say: "Move the post-rate slider live and let the funnel react. “Ten points of post rate is worth more than any budget increase.” Then One LIVE hour: “this is costed at your own posted pay; crew is the cheap part, the boost and the margin decide whether an hour pays.”" },
   { href: "/#plan", page: "04 · The plan", time: "3:45", say: "“Learn the book, fix the biggest leak, then grow. And if I start in Q4, Black Friday comes first, so the plan counts back from it.” Then turn it into questions." },
 ];
 

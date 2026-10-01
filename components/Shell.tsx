@@ -19,9 +19,15 @@ export default function Shell({ children }: { children: ReactNode }) {
   const share = useShare();
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
+  const [progress, setProgress] = useState(0);
+  const [menu, setMenu] = useState(false);
 
   useEffect(() => {
-    const on = () => setScrolled(window.scrollY > 24);
+    const on = () => {
+      setScrolled(window.scrollY > 24);
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      setProgress(max > 0 ? window.scrollY / max : 0);
+    };
     on();
     window.addEventListener("scroll", on, { passive: true });
     return () => window.removeEventListener("scroll", on);
@@ -31,9 +37,14 @@ export default function Shell({ children }: { children: ReactNode }) {
     <>
       <header
         className={`fixed inset-x-0 top-0 z-40 transition-all duration-300 ${
-          scrolled ? "border-b border-line bg-white/85 backdrop-blur-xl" : "border-b border-transparent"
+          scrolled || menu ? "border-b border-line bg-white/85 backdrop-blur-xl" : "border-b border-transparent"
         }`}
       >
+        <span
+          aria-hidden
+          className="absolute bottom-[-1px] left-0 h-[2px] bg-live transition-[width] duration-150"
+          style={{ width: `${progress * 100}%` }}
+        />
         <div className="mx-auto flex h-16 w-full max-w-[1280px] items-center gap-6 px-5 sm:px-8">
           <TLink href="/" className="flex shrink-0 items-center gap-2.5 text-ink">
             <SoMark className="h-7 w-7" />
@@ -65,12 +76,42 @@ export default function Shell({ children }: { children: ReactNode }) {
             {prepAllowed && <ModeSwitch />}
             <a
               href="mailto:william@bywilliaml.com"
-              className="rounded-full bg-live px-4 py-2 text-[13px] font-medium text-white transition-transform hover:scale-[1.03]"
+              className="hidden rounded-full bg-live px-4 py-2 text-[13px] font-medium text-white transition-transform hover:scale-[1.03] sm:inline-block"
             >
               Get in touch
             </a>
+            <button
+              type="button"
+              onClick={() => setMenu((m) => !m)}
+              aria-expanded={menu}
+              aria-label="Sections"
+              className="no-print flex h-9 w-9 items-center justify-center rounded-full border border-line-2 lg:hidden"
+            >
+              <span className="relative block h-[10px] w-4">
+                <span className={`absolute left-0 h-[1.5px] w-4 bg-ink transition-all ${menu ? "top-[4px] rotate-45" : "top-0"}`} />
+                <span className={`absolute left-0 h-[1.5px] w-4 bg-ink transition-all ${menu ? "top-[4px] -rotate-45" : "top-[8px]"}`} />
+              </span>
+            </button>
           </div>
         </div>
+        {menu && (
+          <nav className="u-rise border-t border-line bg-white px-5 pb-6 pt-2 lg:hidden">
+            {NAV.map((n, i) => (
+              <TLink
+                key={n.href}
+                href={n.href}
+                onClick={() => setMenu(false)}
+                className="flex items-baseline gap-4 border-b border-line py-3.5"
+              >
+                <span className="u-num text-[12px] font-semibold text-live">{String(i + 1).padStart(2, "0")}</span>
+                <span className="font-[family-name:var(--font-display)] text-[22px] font-semibold tracking-[-0.02em] text-ink">{n.label}</span>
+              </TLink>
+            ))}
+            <a href="mailto:william@bywilliaml.com" className="mt-5 inline-block rounded-full bg-live px-5 py-2.5 text-[14px] font-medium text-white">
+              Get in touch
+            </a>
+          </nav>
+        )}
       </header>
 
       <main>{children}</main>

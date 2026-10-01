@@ -1,4 +1,5 @@
 import { ImageResponse } from "next/og";
+import { LOGO_PATH, LOGO_VIEWBOX } from "@/components/three/logoPath";
 
 export const alt = "SuperOrdinary, read like an operator";
 export const size = { width: 1200, height: 630 };
@@ -12,30 +13,30 @@ export default function OG() {
           width: "100%",
           height: "100%",
           display: "flex",
-          flexDirection: "column",
           justifyContent: "space-between",
-          background: "radial-gradient(900px 500px at 80% 40%, rgba(255,90,54,0.35), #09090b 70%)",
-          padding: 72,
-          fontFamily: "Georgia, serif",
+          alignItems: "center",
+          background: "#ffffff",
+          padding: "72px 80px",
+          fontFamily: "sans-serif",
         }}
       >
-        <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
-          <div style={{ width: 18, height: 18, borderRadius: 9, background: "#e0412b" }} />
-          <div style={{ fontSize: 24, letterSpacing: 3, color: "#f4f1eb", fontFamily: "sans-serif" }}>
-            SUPERORDINARY · AN OPERATOR’S READ
+        <div style={{ display: "flex", flexDirection: "column", maxWidth: 680 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 12, fontSize: 22, letterSpacing: 4, color: "#121212" }}>
+            <div style={{ width: 12, height: 12, borderRadius: 6, background: "#f23726" }} />
+            GM, TIKTOK SHOP OPERATIONS
+          </div>
+          <div style={{ display: "flex", flexDirection: "column", marginTop: 36, fontSize: 84, fontWeight: 700, lineHeight: 1, letterSpacing: -3, color: "#121212" }}>
+            <span>SuperOrdinary,</span>
+            <span style={{ color: "#f23726" }}>read like an</span>
+            <span>operator.</span>
+          </div>
+          <div style={{ marginTop: 36, fontSize: 26, color: "#3f3f3f" }}>
+            The company, the portfolio, the engine, the numbers. By William Lee.
           </div>
         </div>
-        <div style={{ display: "flex", flexDirection: "column" }}>
-          <div style={{ fontSize: 88, lineHeight: 1.02, color: "#f4f1eb" }}>
-            SuperOrdinary, read like an operator.
-          </div>
-          <div style={{ marginTop: 28, fontSize: 30, color: "#bdb8ae", fontFamily: "sans-serif" }}>
-            The TikTok Shop engine: the business, where value leaks, the numbers, the plan.
-          </div>
-        </div>
-        <div style={{ fontSize: 22, color: "#8d887e", fontFamily: "sans-serif" }}>
-          Prepared by William Lee
-        </div>
+        <svg width="340" height="340" viewBox={LOGO_VIEWBOX.join(" ")}>
+          <path fill="#121212" fillRule="evenodd" d={LOGO_PATH} />
+        </svg>
       </div>
     ),
     size,
