@@ -1,6 +1,4 @@
 import Image from "next/image";
-import { existsSync } from "node:fs";
-import path from "node:path";
 import Reveal from "@/components/Reveal";
 import { BRANDS } from "@/data/brands.mjs";
 import { SPOTLIGHTS } from "@/data/company";
@@ -12,8 +10,11 @@ const BEAUTY = new Set([
   "Consumer health", "Grooming", "Beauty devices", "Bath & body", "Body care", "CBD beauty",
 ]);
 
+// Listed from public/logos at build time (next.config.mjs).
+const LOGOS = new Set((process.env.LOGO_DOMAINS ?? "").split(","));
+
 function hasLogo(domain: string) {
-  return existsSync(path.join(process.cwd(), "public", "logos", `${domain}.png`));
+  return LOGOS.has(domain);
 }
 
 function Logo({ b, size = 48 }: { b: { name: string; domain: string }; size?: number }) {

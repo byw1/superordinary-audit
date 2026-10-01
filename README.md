@@ -32,7 +32,8 @@ recipient finds by editing the URL, shows only the audit and the evidence.
 The **prep view** adds the honest gaps against each requirement, the pushback I
 expect with my answers, who's who, and referral notes. It needs a key:
 
-1. On Railway, set the variable `PREP_KEY` to a long random string.
+1. On Cloudflare, add a secret `PREP_KEY` holding a long random string (see
+   [Deploy on Cloudflare](#deploy-on-cloudflare)).
 2. Visit any page with `?prep=<PREP_KEY>` once. A cookie remembers it for 60
    days and the key is removed from the address bar.
 3. A **Prep / Share** toggle appears in the header. Share previews exactly what
@@ -55,26 +56,49 @@ No database, no runtime fetches. Everything renders from `data/*.ts`.
 
 ```bash
 npm install
-npm run dev        # http://localhost:3000
-npm run build && npm run start
+npm run dev        # http://localhost:3000, plain Next.js
+npm run preview    # the production build in Cloudflare's runtime, http://localhost:8787
 ```
 
-## Deploy on Railway
+For `npm run preview`, put `PREP_KEY=<anything>` in a `.dev.vars` file
+(gitignored) to try the prep view locally.
 
-1. New project → Deploy from GitHub repo → `byw1/superordinary-audit`.
-2. Variables → add `PREP_KEY` (see above).
-3. Settings → Networking → **Generate domain**. Do this before the build you
-   intend to share: the link-preview image's absolute URL is baked in at build
-   time from `RAILWAY_PUBLIC_DOMAIN` (or `NEXT_PUBLIC_SITE_URL`).
-4. Redeploy once the domain exists.
+## Deploy on Cloudflare
 
-Node 22 is pinned via `.nvmrc` and `engines.node`. That pin matters: Railway's
-builder otherwise defaults to Node 18, and Tailwind v4's native binding needs
-Node 20+ — the failure surfaces much later as `Cannot find native binding`.
-Build and start commands are the defaults (`npm run build`, `npm run start`);
-`start` binds to `$PORT`.
+It runs as a Cloudflare Worker through the
+[OpenNext adapter](https://opennext.js.org/cloudflare) (`wrangler.jsonc`,
+`open-next.config.ts`). Static files are served from Cloudflare's asset store;
+only page requests run the worker. It fits the free Workers plan.
 
-Fonts ship from npm (`geist`, `@fontsource/instrument-serif`) rather than
-`next/font/google`, so the build never depends on a network fetch.
+**From GitHub (deploys on every push):**
+
+1. Cloudflare dashboard → Workers & Pages → Create → Import a repository →
+   `byw1/superordinary-audit`.
+2. Build command: `npx opennextjs-cloudflare build`.
+   Deploy command: `npx opennextjs-cloudflare deploy`.
+   Leave `npm run build` as plain `next build`: the adapter calls it itself.
+3. After the first deploy: the worker → Settings → Variables and Secrets → add
+   `PREP_KEY` as a **Secret**.
+4. Settings → Domains & Routes to add a custom domain, if you want one. The
+   `*.workers.dev` URL works as is.
+
+**From your machine:** `npx wrangler login`, then `npm run deploy`, and
+`npx wrangler secret put PREP_KEY` once.
+
+The link-preview image's absolute URL comes from the host each request arrives
+on, so the workers.dev URL and a custom domain both get a working preview card
+with nothing to configure. Set `NEXT_PUBLIC_SITE_URL` at build time only to pin
+one.
+
+Node 22 is pinned via `.nvmrc` and `engines.node`. Tailwind v4's native binding
+needs Node 20+, and an older builder fails late with `Cannot find native
+binding`.
+
+The worker has no filesystem, so nothing may check for files at request time.
+The logo list, for example, is read from `public/logos` in `next.config.mjs`
+during the build.
+
+Fonts ship from npm (`geist`, `@fontsource/*`) rather than `next/font/google`,
+so the build never depends on a network fetch.
 
 The site sets `noindex` so it doesn't show up in search.
