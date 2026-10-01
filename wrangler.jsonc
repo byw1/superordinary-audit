@@ -1,0 +1,18 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "superordinary-audit",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2026-10-01",
+  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+  // Static files (/_next/static, /public) are served straight from Cloudflare's
+  // asset store; only page requests reach the worker.
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+  "observability": {
+    "enabled": true
+  }
+  // PREP_KEY is a secret, not a var: set it in the dashboard (Settings →
+  // Variables and Secrets) or with `npx wrangler secret put PREP_KEY`.
+}

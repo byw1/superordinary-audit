@@ -5,6 +5,7 @@ import "@fontsource/zalando-sans-semiexpanded/600.css";
 import "@fontsource/zalando-sans-semiexpanded/700.css";
 import "@fontsource/inter/400.css";
 import "@fontsource/inter/500.css";
+import { headers } from "next/headers";
 import { Suspense } from "react";
 import "./globals.css";
 import Shell from "@/components/Shell";
@@ -18,25 +19,31 @@ const DESCRIPTION =
 // Fonts come from npm packages (geist, @fontsource) rather than
 // next/font/google, so a production build never depends on a network fetch.
 
-// Without an absolute base, the OG image resolves against localhost and the
-// preview card breaks wherever the link gets pasted.
-const host =
-  process.env.NEXT_PUBLIC_SITE_URL ??
-  (process.env.RAILWAY_PUBLIC_DOMAIN
-    ? `https://${process.env.RAILWAY_PUBLIC_DOMAIN}`
-    : "http://localhost:3000");
-
 // The view is decided per request (middleware.ts), so nothing is prerendered.
 export const dynamic = "force-dynamic";
 
-export const metadata: Metadata = {
-  metadataBase: new URL(host),
-  title: TITLE,
-  description: DESCRIPTION,
-  openGraph: { title: TITLE, description: DESCRIPTION, type: "website" },
-  twitter: { card: "summary_large_image" },
-  robots: { index: false, follow: false },
-};
+// Without an absolute base, the OG image resolves against localhost and the
+// preview card breaks wherever the link gets pasted. The base comes from the
+// host the request arrived on, so workers.dev and a custom domain both work
+// with nothing baked in at build time. NEXT_PUBLIC_SITE_URL pins it if needed.
+async function siteUrl() {
+  if (process.env.NEXT_PUBLIC_SITE_URL) return process.env.NEXT_PUBLIC_SITE_URL;
+  const h = await headers();
+  const host = h.get("x-forwarded-host") ?? h.get("host") ?? "localhost:3000";
+  const proto = h.get("x-forwarded-proto") ?? (host.startsWith("localhost") ? "http" : "https");
+  return `${proto}://${host}`;
+}
+
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    metadataBase: new URL(await siteUrl()),
+    title: TITLE,
+    description: DESCRIPTION,
+    openGraph: { title: TITLE, description: DESCRIPTION, type: "website" },
+    twitter: { card: "summary_large_image" },
+    robots: { index: false, follow: false },
+  };
+}
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const mode = await getView();
